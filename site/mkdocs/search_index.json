@@ -1,0 +1,14 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome to Lurch\n\n\nFull documentation coming soon.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#welcome-to-lurch", 
+            "text": "Full documentation coming soon.", 
+            "title": "Welcome to Lurch"
+        }
+    ]
+}
