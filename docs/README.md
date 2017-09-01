@@ -20,7 +20,7 @@ that install netstat from a package manager before we can proceed.
       <p><i>This project is rewriting Lurch for the web.</i></p>
     </td>
     <td>
-      <img src='doc-src/desktop-lurch-icon.png' width='256' height='128'>
+      <img src='img/desktop-lurch-icon.png' width='256' height='128'>
     </td>
   </tr>
 </table>
