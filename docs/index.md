@@ -1,3 +1,3 @@
 # Welcome to Lurch
 
-Full documentation coming soon.
+Full documentation will be coming soon.

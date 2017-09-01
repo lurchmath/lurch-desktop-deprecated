@@ -2,12 +2,12 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to Lurch\n\n\nFull documentation coming soon.", 
+            "text": "Welcome to Lurch\n\n\nFull documentation will be coming soon.", 
             "title": "Home"
         }, 
         {
             "location": "/#welcome-to-lurch", 
-            "text": "Full documentation coming soon.", 
+            "text": "Full documentation will be coming soon.", 
             "title": "Welcome to Lurch"
         }, 
         {
