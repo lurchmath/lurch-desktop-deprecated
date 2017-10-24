@@ -9,26 +9,6 @@
             "location": "/#welcome-to-lurch", 
             "text": "Full documentation will be coming soon.", 
             "title": "Welcome to Lurch"
-        }, 
-        {
-            "location": "/README/", 
-            "text": "webLurch\n\n\n\n\n\nGoal\n\n\n\n  \n\n    \n\n      \nLurch is a mathematical word\n        processor\n that checks the reasoning in users' documents, even\n        mathematical proofs.\n\n      \nThis project is rewriting Lurch for the web.\n\n    \n\n    \n\n      \n\n    \n\n  \n\n\n\n\n\nStatus\n\n\n\n\nIf you're interested in using Lurch right now, try\n   \nthe desktop version\n.\n\n\nTo see the status of this new version in detail, view \nthe full webLurch\n   documentation\n.\n\n\nTo help with development, jump to \nthe developer\n   documentation\n.", 
-            "title": "README"
-        }, 
-        {
-            "location": "/README/#weblurch", 
-            "text": "", 
-            "title": "webLurch"
-        }, 
-        {
-            "location": "/README/#goal", 
-            "text": "Lurch is a mathematical word\n        processor  that checks the reasoning in users' documents, even\n        mathematical proofs. \n       This project is rewriting Lurch for the web.", 
-            "title": "Goal"
-        }, 
-        {
-            "location": "/README/#status", 
-            "text": "If you're interested in using Lurch right now, try\n    the desktop version .  To see the status of this new version in detail, view  the full webLurch\n   documentation .  To help with development, jump to  the developer\n   documentation .", 
-            "title": "Status"
         }
     ]
 }
