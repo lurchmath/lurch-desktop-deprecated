@@ -1,4 +1,5 @@
 
 # Welcome to Lurch
 
-Full documentation will be coming soon.
+More documentation forthcoming;
+for now, see [the repository](https://github.com/lurchmath/lurch).
