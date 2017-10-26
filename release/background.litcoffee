@@ -241,10 +241,18 @@ errorHandler )`.
 
 If Web Workers are supported in the current environment, we create one for
 this background function.  Otherwise, we do not, and we will have to fall
-back on a much simpler technique later.
+back on a much simpler technique later.  When we load the worker script, we
+use jQuery to find out the URL from which this script itself was loaded, and
+get the worker script from the same location.  This enables easier use from
+a CDN.
 
             if window.Worker
-                @worker = new window.Worker 'worker.js'
+                myLocation = $ 'script[src$="background.js"]'
+                    .attr 'src'
+                    .split '/'
+                myLocation.pop()
+                @worker = new window.Worker \
+                    "#{myLocation.join '/'}/worker.js"
                 @worker.addEventListener 'message', ( event ) =>
                     @promise.result = event.data
                     @promise?.resultCallback? event.data
