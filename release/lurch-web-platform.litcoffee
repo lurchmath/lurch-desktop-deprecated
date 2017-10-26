@@ -3324,8 +3324,7 @@ The plugin, when initialized on an editor, places an instance of the
             height : 22px;
         }
     '
-    styleSheet = 'data:text/html;base64' + \
-        new Buffer( styleSheet ).toString 'base64'
+    styleSheet = 'data:text/css;base64,' + btoa styleSheet
     tinymce.PluginManager.add 'groups', ( editor, url ) ->
         editor.Groups = new Groups editor
         editor.on 'init', ( event ) -> editor.dom.loadCSS styleSheet
