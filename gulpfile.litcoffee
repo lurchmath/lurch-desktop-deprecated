@@ -5,6 +5,7 @@
 
 Load Gulp modules.
 
+    fs = require 'fs' # for loading resources
     gulp = require 'gulp' # main tool
     shell = require 'gulp-shell' # run external commands
     coffee = require 'gulp-coffee' # compile coffeescript
@@ -12,6 +13,65 @@ Load Gulp modules.
     sourcemaps = require 'gulp-sourcemaps' # create source maps
     pump = require 'pump' # good error handling of gulp pipes
     concat = require 'gulp-concat' # for uniting source files
+    each = require 'gulp-each' # for manual tweaks in gulp streams
+    addsrc = require 'gulp-add-src' # for merging files in streams
+
+## Build tools
+
+The following function is useful for embedding any outside resource into a
+JavaScript/CoffeeScript file.  It takes these arguments:
+ 1. The filename containing the content to embed.
+ 2. The MIME type of the data in that file, e.g. `"image/png"`.
+ 3. The filename of the source code in which to embed the data.  This file
+    will be prepended with a single variable declaration, initialized to a
+    big, base64-encoded string containing a data URI.
+ 4. The name of the global variable to create.  Options:
+     * One identifier, such as `"myData"` (useful in CoffeeScript)
+     * Variable declaration, such as `"var myData"` (useful in JavaScript)
+     * Dot notation, such as `"window.myObj.myData"` (useful in either)
+     * One identifier with spaces in front of it (literate CoffeeScript)
+ 5. The code string to replace with the global variable (optional).  For
+    instance, if your code contains the string `"../img/mypicture.png"` and
+    you would like that replaced with the name of the global variable
+    containing the data URI, pass `'"../img/mypicture.png"'` as the value
+    of this third parameter, and all instances of that string literal will
+    be replaced with the name of the new variable.  Set this to null to do
+    no replacements.
+ 6. The filename into which to output the results.
+
+This function is synchronous and immediate, not using the gulp ecosystem.
+
+    embedAsVariableIn = ( fileToEmbed, mimeType, codeFile, varName,
+                          toReplace, outFile ) ->
+        toEmbed = fs.readFileSync fileToEmbed
+        encoded = ( new Buffer toEmbed ).toString 'base64'
+        declaration = "#{varName} = 'data:#{mimeType};base64,#{encoded}'"
+        code = String fs.readFileSync codeFile
+        while toReplace? and -1 < code.indexOf toReplace
+            code = code.replace toReplace, varName
+        fs.writeFileSync outFile, "#{declaration}\n\n#{code}"
+
+Next we define a function that compiles CoffeeScript to JavaScript, with
+minification and source maps.
+
+Its first parameter should be the product of a call to `gulp.src`, or
+something equivalent (like the output of a pipe, or the `embedResource`
+function just defined).  If a string or array is passed instead, that will
+be given to `gulp.src` first.
+
+Its second parameter will be passed directly to `gulp.dest`.
+
+    compileAndMinify = ( sources, destination ) ->
+        if sources instanceof Array or 'string' is typeof sources
+            sources = gulp.src sources
+        pump [
+            sources
+            sourcemaps.init()
+            coffee bare : yes
+            uglify()
+            sourcemaps.write '.'
+            gulp.dest destination
+        ]
 
 ## Contents of a release
 
@@ -35,17 +95,11 @@ Lurch Web Platform.
 Create a task to compile the large file created by the previous task.  We
 use minification and source maps.
 
-    gulp.task 'lwp-build', [ 'lwp-source' ], -> pump [
-        gulp.src 'release/lurch-web-platform.litcoffee'
-        sourcemaps.init()
-        coffee bare : yes
-        uglify()
-        sourcemaps.write '.'
-        gulp.dest 'release/'
-    ]
+    gulp.task 'lwp-build', [ 'lwp-source' ], ->
+        compileAndMinify 'release/lurch-web-platform.litcoffee', 'release/'
 
-Create a task to compile (with minification and source maps) a set of
-auxiliary source files.
+Create a set of tasks to compile (with minification and source maps) a set
+of auxiliary source files, embedding resources where needed.
 
 First, here are the auxiliary files:
 
@@ -53,25 +107,28 @@ First, here are the auxiliary files:
         'source/auxiliary/lurch-embed.litcoffee'
         'source/auxiliary/mathquill-parser.litcoffee'
         'source/auxiliary/testrecorder-page.litcoffee'
-        'source/auxiliary/background.litcoffee'
         'source/auxiliary/worker.litcoffee'
     ]
 
-Next, here are two tasks, one for copying source files (so that source maps
-point to files that exist) and another for compiling.
+Here is a task for copying source files (so that source maps point to files
+that exist), and then a task for compiling those same source files.
 
     gulp.task 'aux-copy', -> pump [
         gulp.src auxFiles
         gulp.dest 'release/'
     ]
-    gulp.task 'aux-build', [ 'aux-copy' ], -> pump [
-        gulp.src auxFiles
-        sourcemaps.init()
-        coffee bare : yes
-        uglify()
-        sourcemaps.write '.'
-        gulp.dest 'release/'
-    ]
+    gulp.task 'aux-build', [ 'aux-copy' ], ->
+        compileAndMinify auxFiles, 'release/'
+
+We must also treat the background module specially:  First, it depends upon
+`aux-build` having completed, so that we can use `worker.js` as a resource.
+Second, it embeds that resource into the background module before compiling.
+
+    gulp.task 'aux-with-bg', [ 'aux-build' ], ->
+        embedAsVariableIn 'release/worker.js', 'text/javascript',
+            'source/auxiliary/background.litcoffee', '    workerScript',
+            "'worker.js'", 'release/background.litcoffee'
+        compileAndMinify 'release/background.litcoffee', 'release/'
 
 The final task is that of building a release, which includes all the tasks
 above, plus one for copying all `source/assets` into the release folder.
@@ -82,7 +139,7 @@ above, plus one for copying all `source/assets` into the release folder.
     ]
     gulp.task 'release-build', [
         'lwp-build'
-        'aux-build'
+        'aux-with-bg'
         'copy-assets'
     ]
 
@@ -94,14 +151,9 @@ not in the repository, because its purpose is to let individual developers
 experiment with temporary/ancillary files on their own machine before adding
 new features to the repository.
 
-    gulp.task 'exp-build', -> pump [
-        gulp.src 'source/experimental/*.litcoffee'
-        sourcemaps.init()
-        coffee bare : yes
-        uglify()
-        sourcemaps.write '.'
-        gulp.dest 'source/experimental/'
-    ]
+    gulp.task 'exp-build', ->
+        compileAndMinify 'source/experimental/*.litcoffee',
+            'source/experimental/'
 
 Create "docs" task to build the documentation using
 [MkDocs](http://www.mkdocs.org).  This requires that you have `mkdocs`

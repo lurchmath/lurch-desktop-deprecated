@@ -247,12 +247,7 @@ get the worker script from the same location.  This enables easier use from
 a CDN.
 
             if window.Worker
-                myLocation = $ 'script[src$="background.js"]'
-                    .attr 'src'
-                    .split '/'
-                myLocation.pop()
-                @worker = new window.Worker \
-                    "#{myLocation.join '/'}/worker.js"
+                @worker = new window.Worker 'worker.js'
                 @worker.addEventListener 'message', ( event ) =>
                     @promise.result = event.data
                     @promise?.resultCallback? event.data

@@ -1,3 +1,5 @@
+    workerScript = 'data:text/javascript;base64,dmFyIGJ1aWxkRnVuY3Rpb24saGFzUHJvcD17fS5oYXNPd25Qcm9wZXJ0eTtidWlsZEZ1bmN0aW9uPWZ1bmN0aW9uKG4pe3ZhciB0LGE7cmV0dXJuIHQ9bi5zdWJzdHJpbmcobi5pbmRleE9mKCIoIikrMSxuLmluZGV4T2YoIikiKSksYT1uLnN1YnN0cmluZyhuLmluZGV4T2YoInsiKSsxLG4ubGFzdEluZGV4T2YoIn0iKSksbmV3IEZ1bmN0aW9uKHQsYSl9LHNlbGYud2luZG93PXNlbGYsc2VsZi5hZGRFdmVudExpc3RlbmVyKCJtZXNzYWdlIixmdW5jdGlvbihuKXt2YXIgdCxhLGk7aWYobi5kYXRhLmhhc093blByb3BlcnR5KCJzZXRGdW5jdGlvbiIpJiYoc2VsZi5hY3Rpb249YnVpbGRGdW5jdGlvbihuLmRhdGEuc2V0RnVuY3Rpb24pKSxuLmRhdGEuaGFzT3duUHJvcGVydHkoInJ1bk9uIikmJnNlbGYucG9zdE1lc3NhZ2UoImZ1bmN0aW9uIj09dHlwZW9mIHNlbGYuYWN0aW9uP3NlbGYuYWN0aW9uLmFwcGx5KHNlbGYsbi5kYXRhLnJ1bk9uKTp2b2lkIDApLG4uZGF0YS5oYXNPd25Qcm9wZXJ0eSgiaW5zdGFsbCIpKXtpPW4uZGF0YS5pbnN0YWxsO2ZvcihhIGluIGkpaGFzUHJvcC5jYWxsKGksYSkmJih0PWlbYV0sc2VsZlthXT1idWlsZEZ1bmN0aW9uKHQpKX1pZihuLmRhdGEuaGFzT3duUHJvcGVydHkoImltcG9ydCIpKXJldHVybiBpbXBvcnRTY3JpcHRzLmFwcGx5KG51bGwsbi5kYXRhLmltcG9ydCl9LCExKTsKLy8jIHNvdXJjZU1hcHBpbmdVUkw9d29ya2VyLmpzLm1hcAo='
+
 
 # Background Computations
 
@@ -247,12 +249,7 @@ get the worker script from the same location.  This enables easier use from
 a CDN.
 
             if window.Worker
-                myLocation = $ 'script[src$="background.js"]'
-                    .attr 'src'
-                    .split '/'
-                myLocation.pop()
-                @worker = new window.Worker \
-                    "#{myLocation.join '/'}/worker.js"
+                @worker = new window.Worker     workerScript
                 @worker.addEventListener 'message', ( event ) =>
                     @promise.result = event.data
                     @promise?.resultCallback? event.data
