@@ -1651,24 +1651,40 @@ the latter if needed.
 
 # Installing the plugin
 
-The plugin, when initialized on an editor, places an instance of the
-`Groups` class inside the editor, and points the class at that editor.
+There is a very small stylesheet we will install with this plugin.
 
     styleSheet = '
         img.grouper {
             margin-bottom : -0.35em;
             cursor : default;
         }
-
         img.grouper.hide:not(.decorate) {
             width : 0px;
             height : 22px;
         }
     '
-    styleSheet = 'data:text/css;base64,' + btoa styleSheet
+    styleSheetURL = 'data:text/css;base64,' + btoa styleSheet
+
+The plugin, when initialized on an editor, places an instance of the
+`Groups` class inside the editor, and points the class at that editor.
+
     tinymce.PluginManager.add 'groups', ( editor, url ) ->
         editor.Groups = new Groups editor
-        editor.on 'init', ( event ) -> editor.dom.loadCSS styleSheet
+
+We do not rely on TinyMCE's built-in stylesheet installing function
+(`loadCSS`), because it cannot handle data URIs.  We wish to use a data URI
+here because it lets us embed the stylesheet in the code, making it easier
+to distribute this file on a CDN.  Instead, I mimic the code from [the
+TinyMCE
+source](https://github.com/tinymce/tinymce/blob/master/src/core/src/main/js/dom/DOMUtils.js),
+but without the feature that splits by commas (thus breaking up data URIs).
+
+        editor.on 'init', ( event ) ->
+            head = editor.getDoc().getElementsByTagName( 'head' )[0]
+            link = editor.getDoc().createElement 'link'
+            link.setAttribute 'rel', 'stylesheet'
+            link.setAttribute 'href', styleSheetURL
+            head.appendChild link
         for type in editor.settings.groupTypes
             editor.Groups.addGroupType type.name, type
         editor.addMenuItem 'hideshowgroups',
