@@ -115,10 +115,9 @@ Not all of the following plugins are working yet, but most are.  A plugin
 that begins with a hyphen is a local plugin written as part of this project.
 
             plugins :
-                'advlist table charmap colorpicker image link
-                paste print searchreplace textcolor
-                -storage -overlay -groups -equationeditor -dependencies
-                -dialogs -downloadupload ' \
+                'advlist table charmap colorpicker image link paste print
+                searchreplace textcolor -storage -overlay -groups
+                -dependencies -dialogs -downloadupload ' \
                 + ( "-#{p}" for p in window.pluginsToLoad ).join( ' ' ) \
                 + ( if window.fullScreenEditor then ' fullscreen' else '' )
 
@@ -315,7 +314,8 @@ by invoking the "mceFullScreen" command.
 
 The third-party plugin for math equations requires the following stylesheet.
 
-                    editor.dom.loadCSS './eqed/mathquill.css'
+                    if 'equationeditor' in window.pluginsToLoad
+                        editor.dom.loadCSS './eqed/mathquill.css'
 
 Add an icon to the left of the File menu, if one has been specified.
 
