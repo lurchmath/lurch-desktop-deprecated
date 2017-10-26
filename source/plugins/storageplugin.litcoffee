@@ -167,11 +167,9 @@ related getters for listing all back-ends, or getting the current one.
         availableBackends: => Object.keys @backends
         getBackend: => @backend
         setBackend: ( which ) =>
-            console.log 'setting back end', which
             if which in @availableBackends()
                 @backend = which
                 window.setFileSystem @backends[@backend]
-                console.log @backends[@backend]
 
 The following function is useful for storing file objects provided by
 [the cloud storage module](https://github.com/lurchmath/cloud-storage), and
