@@ -1654,9 +1654,22 @@ the latter if needed.
 The plugin, when initialized on an editor, places an instance of the
 `Groups` class inside the editor, and points the class at that editor.
 
+    styleSheet = '
+        img.grouper {
+            margin-bottom : -0.35em;
+            cursor : default;
+        }
+
+        img.grouper.hide:not(.decorate) {
+            width : 0px;
+            height : 22px;
+        }
+    '
+    styleSheet = 'data:text/html;base64' + \
+        new Buffer( styleSheet ).toString 'base64'
     tinymce.PluginManager.add 'groups', ( editor, url ) ->
         editor.Groups = new Groups editor
-        editor.on 'init', ( event ) -> editor.dom.loadCSS 'groupsplugin.css'
+        editor.on 'init', ( event ) -> editor.dom.loadCSS styleSheet
         for type in editor.settings.groupTypes
             editor.Groups.addGroupType type.name, type
         editor.addMenuItem 'hideshowgroups',

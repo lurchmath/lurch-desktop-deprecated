@@ -74,22 +74,16 @@ point to files that exist) and another for compiling.
     ]
 
 The final task is that of building a release, which includes all the tasks
-above, plus one for copying all `source/assets` into the release folder,
-and one for copying all style files used by plugins into the release folder.
+above, plus one for copying all `source/assets` into the release folder.
 
     gulp.task 'copy-assets', -> pump [
         gulp.src [ 'source/assets/**/*', '!source/assets/README.md' ]
-        gulp.dest 'release'
-    ]
-    gulp.task 'copy-styles', -> pump [
-        gulp.src 'source/plugins/*.css'
         gulp.dest 'release'
     ]
     gulp.task 'release-build', [
         'lwp-build'
         'aux-build'
         'copy-assets'
-        'copy-styles'
     ]
 
 ## Other build tasks
