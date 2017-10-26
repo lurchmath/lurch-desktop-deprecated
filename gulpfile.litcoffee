@@ -70,6 +70,25 @@ point to files that exist) and another for compiling.
         gulp.dest 'release/'
     ]
 
+The final task is that of building a release, which includes all the tasks
+above, plus one for copying all `source/assets` into the release folder,
+and one for copying all style files used by plugins into the release folder.
+
+    gulp.task 'copy-assets', -> pump [
+        gulp.src [ 'source/assets/**/*', '!source/assets/README.md' ]
+        gulp.dest 'release'
+    ]
+    gulp.task 'copy-styles', -> pump [
+        gulp.src 'source/plugins/*.css'
+        gulp.dest 'release'
+    ]
+    gulp.task 'release-build', [
+        'lwp-build'
+        'aux-build'
+        'copy-assets'
+        'copy-styles'
+    ]
+
 Create a task to compile (with minification and source maps) all source
 files in the `experimental` folder, into that same folder.  This folder is
 not in the repository, because its purpose is to let individual developers
@@ -97,5 +116,6 @@ Create a default task that runs all other tasks.
         'docs'
         'lwp-build'
         'aux-build'
+        'release-build'
         'exp-build'
     ]

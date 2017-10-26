@@ -1,0 +1,10 @@
+
+img.grouper {
+    margin-bottom : -0.35em;
+    cursor : default;
+}
+
+img.grouper.hide:not(.decorate) {
+    width : 0px;
+    height : 22px;
+}
