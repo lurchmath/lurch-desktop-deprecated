@@ -1,6 +1,8 @@
 
 # Build processes using [Gulp](http://gulpjs.com)
 
+## Preparation
+
 Load Gulp modules.
 
     gulp = require 'gulp' # main tool
@@ -10,6 +12,8 @@ Load Gulp modules.
     sourcemaps = require 'gulp-sourcemaps' # create source maps
     pump = require 'pump' # good error handling of gulp pipes
     concat = require 'gulp-concat' # for uniting source files
+
+## Contents of a release
 
 Create a task to concatenate all the source code files that make up the
 Lurch Web Platform.
@@ -21,7 +25,7 @@ Lurch Web Platform.
             'source/modules/canvasutils.litcoffee'
             'source/plugins/*.litcoffee'
             'source/auxiliary/keyboard-shortcuts-workaround.litcoffee'
-            'source/auxiliary/testrecorder.litcoffee'
+            'source/auxiliary/testrecorder-setup.litcoffee'
             'source/auxiliary/setup.litcoffee'
         ]
         concat 'lurch-web-platform.litcoffee'
@@ -31,8 +35,7 @@ Lurch Web Platform.
 Create a task to compile the large file created by the previous task.  We
 use minification and source maps.
 
-    gulp.task 'lwp-build', [ 'lwp-source' ],
-    -> pump [
+    gulp.task 'lwp-build', [ 'lwp-source' ], -> pump [
         gulp.src 'release/lurch-web-platform.litcoffee'
         sourcemaps.init()
         coffee bare : yes
@@ -49,7 +52,7 @@ First, here are the auxiliary files:
     auxFiles = [
         'source/auxiliary/lurch-embed.litcoffee'
         'source/auxiliary/mathquill-parser.litcoffee'
-        'source/auxiliary/testrecorder.litcoffee'
+        'source/auxiliary/testrecorder-page.litcoffee'
         'source/auxiliary/background.litcoffee'
         'source/auxiliary/worker.litcoffee'
     ]
@@ -89,6 +92,8 @@ and one for copying all style files used by plugins into the release folder.
         'copy-styles'
     ]
 
+## Other build tasks
+
 Create a task to compile (with minification and source maps) all source
 files in the `experimental` folder, into that same folder.  This folder is
 not in the repository, because its purpose is to let individual developers
@@ -110,12 +115,12 @@ installed on your system.
 
     gulp.task 'docs', shell.task 'mkdocs build'
 
+## Pulling it all together
+
 Create a default task that runs all other tasks.
 
     gulp.task 'default', [
-        'docs'
-        'lwp-build'
-        'aux-build'
         'release-build'
         'exp-build'
+        'docs'
     ]
