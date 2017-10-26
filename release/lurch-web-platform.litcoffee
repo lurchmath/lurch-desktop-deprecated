@@ -5359,14 +5359,16 @@ draw the viewer's attention there.
             text : 'View documented source code'
             context : 'help'
             onclick : ->
-                window.location.href = 'http://github.com/' + \
-                    'nathancarter/weblurch/blob/master/' + path
-        window.groupMenuItems.tutorial =
-            text : 'View developer tutorial'
-            context : 'help'
-            onclick : ->
-                window.location.href = 'http://github.com/' + \
-                    'nathancarter/weblurch/blob/master/doc/tutorial.md'
+                window.location.href = "http://github.com/lurchmath/#{path}"
+        # THIS SECTION WILL BE UDPATED ONCE DOCUMENTATION HAS MIGRATED TO
+        # THE NEW REPOSITORY.
+        # -----------------------------------------------------------------
+        # window.groupMenuItems.tutorial =
+        #     text : 'View developer tutorial'
+        #     context : 'help'
+        #     onclick : ->
+        #         window.location.href = 'http://github.com/' + \
+        #             'nathancarter/weblurch/blob/master/doc/tutorial.md'
         flash = ( count, delay, elts ) ->
             if count-- <= 0 then return
             elts.fadeOut( delay ).fadeIn delay, -> flash count, delay, elts
