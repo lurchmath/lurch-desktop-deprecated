@@ -6,13 +6,7 @@ projects, with gratitude.  I give credit for those borrowings here.
 
 ## `eqed` folder: Third-party Equation Editor Plugin
 
-The files in the `eqed` folder were taken from the example folder in [this
-project on GitHub](https://github.com/foraker/tinymce_equation_editor).
-Minor modifications were made to integrate them into this project.
-
-In keeping with the license of that project (MIT license), we include this
-text, giving credit to the origins of the code in that folder, and include a
-copy of that license in the `eqed` folder.
+See [the README file in that folder](eqed/README.md) for details.
 
 ## `icons` folder: App icons
 
