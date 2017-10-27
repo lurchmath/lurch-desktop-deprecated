@@ -3329,6 +3329,7 @@ The plugin, when initialized on an editor, places an instance of the
 
     tinymce.PluginManager.add 'groups', ( editor, url ) ->
         editor.Groups = new Groups editor
+        editor.Groups.styleSheet = styleSheet
 
 We do not rely on TinyMCE's built-in stylesheet installing function
 (`loadCSS`), because it cannot handle data URIs.  We wish to use a data URI
