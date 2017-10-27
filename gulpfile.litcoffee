@@ -108,6 +108,7 @@ First, here are the auxiliary files:
         'source/auxiliary/mathquill-parser.litcoffee'
         'source/auxiliary/testrecorder-page.litcoffee'
         'source/auxiliary/worker.litcoffee'
+        'source/auxiliary/xml-groups.litcoffee'
     ]
 
 Here is a task for copying source files (so that source maps point to files
