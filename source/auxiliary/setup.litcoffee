@@ -249,7 +249,7 @@ Add a Help menu.
                     text : 'About...'
                     context : 'help'
                     onclick : -> editor.Dialogs.alert
-                        title : 'webLurch'
+                        title : 'Lurch'
                         message : helpAboutText ? ''
                 editor.addMenuItem 'tour',
                     text : 'Take a tour'
@@ -289,8 +289,8 @@ Add a Help menu.
                 editor.addMenuItem 'website',
                     text : 'Documentation'
                     context : 'help'
-                    onclick : -> window.open \
-                        'http://nathancarter.github.io/weblurch', '_blank'
+                    onclick : -> window.open 'http://lurchmath.github.io',
+                        '_blank'
 
 Add actions and toolbar buttons for all other menu items the client may have
 defined.
@@ -381,7 +381,7 @@ toolbar items in the setup data above.
 
 ## Support demo apps
 
-We want to allow the demo applications in the webLurch source code
+We want to allow the demo applications in the Lurch source code
 repository to place links on their Help menu to their documented source
 code.  This will help people who want to learn Lurch coding find
 resources to do so more easily.  We thus provide this function they can use

@@ -2,7 +2,7 @@
 # Background Computations
 
 This module defines an API for enqueueing background computations on groups
-in webLurch.  It provides an efficient means for running those computations,
+in Lurch.  It provides an efficient means for running those computations,
 no matter how numerous they might be, while keeping the UI responsive.
 
 Warning:  If you do background computation in your document, you may find

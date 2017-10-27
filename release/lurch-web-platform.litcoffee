@@ -3601,9 +3601,9 @@ this behavior.
 # MediaWiki Integration
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software that
-powers [Wikipedia](wikipedia.org).  We plan to integrate webLurch with a
+powers [Wikipedia](wikipedia.org).  We plan to integrate Lurch with a
 MediaWiki instance by adding features that let the software load pages from
-the wiki into webLurch for editing, and easily post changes back to the
+the wiki into Lurch for editing, and easily post changes back to the
 wiki as well.  This plugin implements that two-way communication.
 
 This first version is a start, and does not yet implement full
@@ -3662,7 +3662,7 @@ functions for common use cases follow.
             '&prop=revisions' + \
             '&rvprop=' + rvprop + '&rvparse' + \
             '&format=json&formatversion=2'
-        xhr.setRequestHeader 'Api-User-Agent', 'webLurch application'
+        xhr.setRequestHeader 'Api-User-Agent', 'Lurch application'
         xhr.send()
 
 Inserting the response data from this function into the editor happens in
@@ -3745,7 +3745,7 @@ error parameter will contain the error message as a string.
             '&format=json&formatversion=2'
         if token then URL += '&lgtoken=' + token
         xhr.open 'POST', URL
-        xhr.setRequestHeader 'Api-User-Agent', 'webLurch application'
+        xhr.setRequestHeader 'Api-User-Agent', 'Lurch application'
         xhr.send()
 
 The following function accesses the wiki, attempts to overwrite the page
@@ -3798,12 +3798,12 @@ from its callback (or any time thereafter).
                 encodeURIComponent object.query.tokens.csrftoken
             xhr2.setRequestHeader 'Content-type',
                 'application/x-www-form-urlencoded'
-            xhr2.setRequestHeader 'Api-User-Agent', 'webLurch application'
+            xhr2.setRequestHeader 'Api-User-Agent', 'Lurch application'
             xhr2.send token
         xhr.open 'GET',
             editor.MediaWiki.getAPIPage() + '?action=query&meta=tokens' + \
             '&format=json&formatversion=2'
-        xhr.setRequestHeader 'Api-User-Agent', 'webLurch application'
+        xhr.setRequestHeader 'Api-User-Agent', 'Lurch application'
         xhr.send()
 
 The previous function makes use of the following one.  This depends upon the
@@ -4809,7 +4809,7 @@ any other handling of the event.
 
 # Test Recording Loader
 
-webLurch supports a mode in which it can record various keystrokes and
+Lurch supports a mode in which it can record various keystrokes and
 command invocations, and store them in the form of code that can be copied
 and pasted into the source code for the app's unit testing suite.  This is
 very handy for constructing new test cases without writing a ton of code.
@@ -4841,7 +4841,7 @@ Launch popup window.
 If the browser blocked it, notify the user.
 
             if not testwin
-                alert 'You have asked to run webLurch in test-recording
+                alert 'You have asked to run Lurch in test-recording
                     mode, which requires a popup window.  Your browser has
                     blocked the popup window.  Change its settings or allow
                     this popup to use test-recording mode.'
@@ -5211,7 +5211,7 @@ Add a Help menu.
                     text : 'About...'
                     context : 'help'
                     onclick : -> editor.Dialogs.alert
-                        title : 'webLurch'
+                        title : 'Lurch'
                         message : helpAboutText ? ''
                 editor.addMenuItem 'tour',
                     text : 'Take a tour'
@@ -5251,8 +5251,8 @@ Add a Help menu.
                 editor.addMenuItem 'website',
                     text : 'Documentation'
                     context : 'help'
-                    onclick : -> window.open \
-                        'http://nathancarter.github.io/weblurch', '_blank'
+                    onclick : -> window.open 'http://lurchmath.github.io',
+                        '_blank'
 
 Add actions and toolbar buttons for all other menu items the client may have
 defined.
@@ -5343,7 +5343,7 @@ toolbar items in the setup data above.
 
 ## Support demo apps
 
-We want to allow the demo applications in the webLurch source code
+We want to allow the demo applications in the Lurch source code
 repository to place links on their Help menu to their documented source
 code.  This will help people who want to learn Lurch coding find
 resources to do so more easily.  We thus provide this function they can use

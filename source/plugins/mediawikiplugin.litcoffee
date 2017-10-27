@@ -2,9 +2,9 @@
 # MediaWiki Integration
 
 [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) is the software that
-powers [Wikipedia](wikipedia.org).  We plan to integrate webLurch with a
+powers [Wikipedia](wikipedia.org).  We plan to integrate Lurch with a
 MediaWiki instance by adding features that let the software load pages from
-the wiki into webLurch for editing, and easily post changes back to the
+the wiki into Lurch for editing, and easily post changes back to the
 wiki as well.  This plugin implements that two-way communication.
 
 This first version is a start, and does not yet implement full
@@ -63,7 +63,7 @@ functions for common use cases follow.
             '&prop=revisions' + \
             '&rvprop=' + rvprop + '&rvparse' + \
             '&format=json&formatversion=2'
-        xhr.setRequestHeader 'Api-User-Agent', 'webLurch application'
+        xhr.setRequestHeader 'Api-User-Agent', 'Lurch application'
         xhr.send()
 
 Inserting the response data from this function into the editor happens in
@@ -146,7 +146,7 @@ error parameter will contain the error message as a string.
             '&format=json&formatversion=2'
         if token then URL += '&lgtoken=' + token
         xhr.open 'POST', URL
-        xhr.setRequestHeader 'Api-User-Agent', 'webLurch application'
+        xhr.setRequestHeader 'Api-User-Agent', 'Lurch application'
         xhr.send()
 
 The following function accesses the wiki, attempts to overwrite the page
@@ -199,12 +199,12 @@ from its callback (or any time thereafter).
                 encodeURIComponent object.query.tokens.csrftoken
             xhr2.setRequestHeader 'Content-type',
                 'application/x-www-form-urlencoded'
-            xhr2.setRequestHeader 'Api-User-Agent', 'webLurch application'
+            xhr2.setRequestHeader 'Api-User-Agent', 'Lurch application'
             xhr2.send token
         xhr.open 'GET',
             editor.MediaWiki.getAPIPage() + '?action=query&meta=tokens' + \
             '&format=json&formatversion=2'
-        xhr.setRequestHeader 'Api-User-Agent', 'webLurch application'
+        xhr.setRequestHeader 'Api-User-Agent', 'Lurch application'
         xhr.send()
 
 The previous function makes use of the following one.  This depends upon the

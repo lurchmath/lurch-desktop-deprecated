@@ -1,7 +1,7 @@
 
 # Test Recording UI
 
-webLurch supports a mode in which it can record various keystrokes and
+Lurch supports a mode in which it can record various keystrokes and
 command invocations, and store them in the form of code that can be copied
 and pasted into the source code for the app's unit testing suite.  This is
 very handy for constructing new test cases without writing a ton of code.
@@ -76,7 +76,7 @@ representation of the `testState` global variable.
             escapeApos = ( text ) -> text.replace /'/g, '\\\''
             indent = ( text ) ->
                 '    ' + text.replace ( RegExp '\n', 'g' ), '\n    '
-            code = '\nTest built with webLurch test-recording mode.\n\n'
+            code = '\nTest built with Lurch test-recording mode.\n\n'
             title = testState.title or 'untitled test'
             code += "    it '#{escapeApos title}', inPage ->\n"
             ary = testState.steps
@@ -214,7 +214,7 @@ user that they haven't actually tested anything yet.
                     actually contain an assertion to be tested.'
                 return
             recipient = 'ncarter@bentley.edu'
-            subject = 'webLurch: recorded unit test'
+            subject = 'Lurch: recorded unit test'
             body = encodeURIComponent "\n
                 \nThe following unit test was recorded on #{new Date}.\n
                 \n(Before sending this email, feel free to add any extra
