@@ -203,29 +203,11 @@ the main project plan without these bug fixes or enhancements.</p>
 </ul>
 <h3 id="other">Other</h3>
 <ul>
-<li>Some of the <code>*-duo.litcoffee</code> files in <code>src/</code> in the master branch also
-   have committed versions in <code>app/</code> that are merely copies.  This is
-   necessary in the gh-pages branch, but in master it's redundant.  Fix.</li>
-<li>Travis-CI build was segmentation faulting, though the tests run just fine
-   locally for me.  Figure out why and get the Travis build working again,
-   then uncomment the Travis status indicator in
-   <a href="https://github.com/nathancarter/weblurch/blob/master/README.md">README.md</a>.</li>
 <li>In the Lean example app, <code>termGroupToCode</code> uses <code>contentsAsText</code>, which
    ignores paragraph breaks, as if they were not whitespace; this is
    problematic.  Use <code>contentAsCode</code> instead.</li>
 </ul>
 <h2 id="enhancements">Enhancements</h2>
-<h3 id="validation">Validation</h3>
-<ul>
-<li>The boilerplate code at the end of <code>computeStepValidationAsync</code> in the
-   validation module is not as extensive (and thus as helpful) as it is in
-   the OverLeaf specification.  Specifically, you can declare variables for
-   <code>valid</code>, <code>message</code>, and <code>verbose</code>, and then package them into an object
-   at the end as part of the boilerplate.  Then users just need to assign to
-   those variables.</li>
-<li>Make validation icons go grey at the start of validation, and they'll be
-   replaced by non-gray ones when validation completes.</li>
-</ul>
 <h3 id="mathquill-parsing">MathQuill parsing</h3>
 <ul>
 <li>Before doing any MathQuill updates, import MathQuill 0.10, which has big
@@ -329,7 +311,6 @@ topics.</p>
 </ul>
 <h3 id="miscellaneous">Miscellaneous</h3>
 <ul>
-<li>Move all plugin files into the <code>src/</code> folder, if possible.</li>
 <li>See <a href="http://stackoverflow.com/a/32120344/670492">this answer</a> to your
    StackOverflow question about higher resolution HTML canvas rendering on
    retina deisplays.  See if its suggestions can work in your case.  This
@@ -343,30 +324,6 @@ topics.</p>
    <a href="https://github.com/MrRio/jsPDF">jsPDF</a>.</li>
 <li>In the Lean example app:  How might we work Lean's <code>notation</code>
    definitions in with MathQuill widgets in the document?</li>
-</ul>
-<h3 id="background-processing">Background processing</h3>
-<ul>
-<li>Create a way to write a foreground function tht is a series of background
-   steps as inner functions, and only the one for teh current state of the
-   group is run, automatically placing it in the next state.  The following
-   example client code would create internal state names in a linear order.
-   This could be a subclass of a more general one that's an arbitrary state
-   graph.</li>
-</ul>
-<pre><code>P = new Processor 'group type name here'
-P.addStep ( group ) -&gt; ...
-P.addStep ( group ) -&gt; ...
-</code></pre>
-
-<ul>
-<li>Design and implement how this could be extended to support passing arrays
-   of argument lists and receiving arrays of results, to minimize the
-   overhead of message-passing.</li>
-<li>Leverage the previous change to make the current implementation more
-   efficient as follows:  When starting a background computation, take
-   several other waiting computations with the same background function, and
-   start all at once, on the array of argument lists, so that only one
-   message passing need occur.</li>
 </ul>
 <h3 id="enhancements-to-the-xml-groups-module-andor-demo-app">Enhancements to the XML Groups module and/or demo app</h3>
 <ul>

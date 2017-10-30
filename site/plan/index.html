@@ -147,14 +147,12 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#project-plan">Project Plan</a></li>
-            <li><a href="#tidying-up-this-repository">Tidying up this repository</a></li>
             <li><a href="#json-editor-demo-app">JSON editor demo app</a></li>
             <li><a href="#enabling-and-disabling-features">Enabling and disabling features</a></li>
             <li><a href="#parsing-test">Parsing test</a></li>
             <li><a href="#google-drive-support">Google Drive support</a></li>
             <li><a href="#offline-support">Offline support</a></li>
             <li><a href="#ideas-from-various-sources">Ideas from various sources</a></li>
-            <li><a href="#repository-organization">Repository organization</a></li>
             <li><a href="#improving-documentation">Improving documentation</a></li>
     </ul>
 </div></div>
@@ -170,26 +168,6 @@ later items are more vague than the earlier ones.</p>
 of the linear progression of the project.  They can be addressed whenever it
 becomes convenient or useful; this document lists things in a more-or-less
 required order of completion.</p>
-<h2 id="tidying-up-this-repository">Tidying up this repository</h2>
-<ul>
-<li>Get the MediaWiki changes that are on our development server stored in
-   this repository, for completeness.</li>
-<li>Move away from gh-pages, and start using a subfolder of the repository as
-   the built app folder instead.  This should simultaneously get rid of the
-   problem of having some files duplicated in the <code>src/</code> and <code>app/</code> folders,
-   because that will actually become intentional.</li>
-<li>Switch to an actual build process, such as Grunt or Webpack, rather than
-   using my own ad-hoc thing in a cakefile.</li>
-<li>How many apps can be factored out into separate repositories?  These are
-   good candidates:<ul>
-<li>OpenMath demo app (importing the LWP rather than being imported by it)</li>
-<li>Lean UI demo app (same)</li>
-<li>Code/Sidebar demo app (same)</li>
-</ul>
-</li>
-<li>Update the unit test scripts so that all tests are passing, including on
-   the Travis CI end.</li>
-</ul>
 <h2 id="json-editor-demo-app">JSON editor demo app</h2>
 <p>This is low priority, but another demo app you could create would be a JSON
 editor.  It would be a lot like the OMCD editor, except produce JSON instead
@@ -477,19 +455,6 @@ permits.</p>
 Similar apps could be created for iOS, Android, etc., but would need to use
 tools other than Electron.  These are orthogonal tasks, and need not all be
 done by the same developer.</li>
-</ul>
-<h2 id="repository-organization">Repository organization</h2>
-<ul>
-<li>The <code>app/</code> folder is getting cluttered.  Create an <code>app/examples/</code>
-   subfolder and move every <code>*-example.html</code> and <code>*-example-solo.litcoffee</code>
-   into it.  Update any relative links to other resources, and any links to
-   those pages.<ul>
-<li>This requires also updating the <code>cake.litcoffee</code> to compile files in
-  that subfolder as well.</li>
-<li>It also requires taking care with the <code>gh-pages</code> merge, so that
-  compiled files get deleted/recreated correctly in that branch (once).</li>
-</ul>
-</li>
 </ul>
 <h2 id="improving-documentation">Improving documentation</h2>
 <p>Documentation at the top of most unit test spec files is incomplete. Add

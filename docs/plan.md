@@ -13,24 +13,6 @@ of the linear progression of the project.  They can be addressed whenever it
 becomes convenient or useful; this document lists things in a more-or-less
 required order of completion.
 
-## Tidying up this repository
-
- * Get the MediaWiki changes that are on our development server stored in
-   this repository, for completeness.
- * Move away from gh-pages, and start using a subfolder of the repository as
-   the built app folder instead.  This should simultaneously get rid of the
-   problem of having some files duplicated in the `src/` and `app/` folders,
-   because that will actually become intentional.
- * Switch to an actual build process, such as Grunt or Webpack, rather than
-   using my own ad-hoc thing in a cakefile.
- * How many apps can be factored out into separate repositories?  These are
-   good candidates:
-    * OpenMath demo app (importing the LWP rather than being imported by it)
-    * Lean UI demo app (same)
-    * Code/Sidebar demo app (same)
- * Update the unit test scripts so that all tests are passing, including on
-   the Travis CI end.
-
 ## JSON editor demo app
 
 This is low priority, but another demo app you could create would be a JSON
@@ -330,17 +312,6 @@ permits.
 Similar apps could be created for iOS, Android, etc., but would need to use
 tools other than Electron.  These are orthogonal tasks, and need not all be
 done by the same developer.
-
-## Repository organization
-
- * The `app/` folder is getting cluttered.  Create an `app/examples/`
-   subfolder and move every `*-example.html` and `*-example-solo.litcoffee`
-   into it.  Update any relative links to other resources, and any links to
-   those pages.
-    * This requires also updating the `cake.litcoffee` to compile files in
-      that subfolder as well.
-    * It also requires taking care with the `gh-pages` merge, so that
-      compiled files get deleted/recreated correctly in that branch (once).
 
 ## Improving documentation
 

@@ -51,29 +51,11 @@ the main project plan without these bug fixes or enhancements.
 
 ### Other
 
- * Some of the `*-duo.litcoffee` files in `src/` in the master branch also
-   have committed versions in `app/` that are merely copies.  This is
-   necessary in the gh-pages branch, but in master it's redundant.  Fix.
- * Travis-CI build was segmentation faulting, though the tests run just fine
-   locally for me.  Figure out why and get the Travis build working again,
-   then uncomment the Travis status indicator in
-   [README.md](https://github.com/nathancarter/weblurch/blob/master/README.md).
  * In the Lean example app, `termGroupToCode` uses `contentsAsText`, which
    ignores paragraph breaks, as if they were not whitespace; this is
    problematic.  Use `contentAsCode` instead.
 
 ## Enhancements
-
-### Validation
-
- * The boilerplate code at the end of `computeStepValidationAsync` in the
-   validation module is not as extensive (and thus as helpful) as it is in
-   the OverLeaf specification.  Specifically, you can declare variables for
-   `valid`, `message`, and `verbose`, and then package them into an object
-   at the end as part of the boilerplate.  Then users just need to assign to
-   those variables.
- * Make validation icons go grey at the start of validation, and they'll be
-   replaced by non-gray ones when validation completes.
 
 ### MathQuill parsing
 
@@ -179,7 +161,6 @@ topics.
 
 ### Miscellaneous
 
- * Move all plugin files into the `src/` folder, if possible.
  * See [this answer](http://stackoverflow.com/a/32120344/670492) to your
    StackOverflow question about higher resolution HTML canvas rendering on
    retina deisplays.  See if its suggestions can work in your case.  This
@@ -193,28 +174,6 @@ topics.
    [jsPDF](https://github.com/MrRio/jsPDF).
  * In the Lean example app:  How might we work Lean's `notation`
    definitions in with MathQuill widgets in the document?
-
-### Background processing
-
- * Create a way to write a foreground function tht is a series of background
-   steps as inner functions, and only the one for teh current state of the
-   group is run, automatically placing it in the next state.  The following
-   example client code would create internal state names in a linear order.
-   This could be a subclass of a more general one that's an arbitrary state
-   graph.
-```
-P = new Processor 'group type name here'
-P.addStep ( group ) -> ...
-P.addStep ( group ) -> ...
-```
- * Design and implement how this could be extended to support passing arrays
-   of argument lists and receiving arrays of results, to minimize the
-   overhead of message-passing.
- * Leverage the previous change to make the current implementation more
-   efficient as follows:  When starting a background computation, take
-   several other waiting computations with the same background function, and
-   start all at once, on the array of argument lists, so that only one
-   message passing need occur.
 
 ### Enhancements to the XML Groups module and/or demo app
 

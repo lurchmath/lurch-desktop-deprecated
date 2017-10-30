@@ -148,56 +148,46 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#getting-started">Getting Started</a></li>
             <li><a href="#try-the-demos-online">Try the demos online</a></li>
+            <li><a href="#stop-reading-here">Stop reading here!</a></li>
             <li><a href="#setting-up-a-local-repository">Setting up a local repository</a></li>
             <li><a href="#running-a-local-web-server">Running a local web server</a></li>
-            <li><a href="#coffeescript">CoffeeScript</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="getting-started">Getting Started</h1>
 <p>This documentation is for developers who wish to learn about the <em>Lurch Web
-Platform,</em> and consider installing it on their local machine to begin using
-it, either to build on it, or to help improve it.</p>
+Platform,</em> and consider importing it into their own web projects.</p>
 <h2 id="try-the-demos-online">Try the demos online</h2>
-<p>You can <a href="../example-apps/">try out demo apps right now online</a>, but doing
-development requires cloning and setting up this repository on your machine.
-Here's how.</p>
+<p>You can <a href="../example-apps/">try out demo apps right now online</a>.  To use the
+platform, you can simply import the necessary files from a CDN.</p>
+<h2 id="stop-reading-here">Stop reading here!</h2>
+<p>Thta is, if you just want to use the platform in your own apps.  In that
+case, check out the demo apps linked to above, or the
+<a href="../dev-tutorial/">developer tutorial</a>.</p>
+<p>Only continue reading below if you want to <em>help us develop the Lurch Web
+Platform itself.</em>  In that case, you need to clone and set up this
+repository on your machine.  Here's how:</p>
 <h2 id="setting-up-a-local-repository">Setting up a local repository</h2>
 <p>Install <a href="http://nodejs.org">node.js</a>, which governs our building and testing
 process.  (The apps run in a browser.)</p>
-<p>Then execute the commands below from a *nix prompt.</p>
-<pre><code>$ git clone https://github.com/nathancarter/weblurch
-$ cd weblurch
-$ git submodule init   # prepares git submodule folders
-$ git submodule update # downloads all files in all git submodules
-$ npm install          # installs required packages in ./node_modules
-$ npm test             # builds app and runs unit test suite
-</code></pre>
-
+<p>Then execute these commands from a *nix prompt:
+ * Get the repository: <code>git clone https://github.com/lurchmath/lurch.git</code>
+ * Enter that folder: <code>cd lurch</code>
+ * Install node.js modules: <code>npm install</code></p>
+<p>To compile the source, you'll want to run the build command
+<a href="https://gulpjs.com/">gulp</a> from inside the <code>lurch</code> folder. You may need to
+install gulp first; see its website.</p>
+<p>You can also run <code>gulp test</code> to run the unit tests.</p>
 <h2 id="running-a-local-web-server">Running a local web server</h2>
-<p>To use any of the demo apps on your own local machine, you need a web server
-(to avoid browser security concerns with <code>file:///</code> URLs).  You almost
-certainly have Python installed, so in the root of the project repository,
-do this.</p>
+<p>If you build an app on the Lurch Web Platform, and are testing it on your
+local machine, , you need a web server (to avoid browser security concerns
+with <code>file:///</code> URLs).  You almost certainly have Python installed, so in
+the folder you're building your app, do this.</p>
 <pre><code>$ python -m SimpleHTTPServer 8000
 </code></pre>
 
-<p>Point your browser to <code>localhost:8000/app/index.html</code>, or any other page in
-the repository's <code>app/</code> folder.</p>
-<h2 id="coffeescript"><a href="http://www.coffeescript.org">CoffeeScript</a></h2>
-<p>To build the app without running the tests, you'll want to run the build
-command <code>cake</code>, which is part of <a href="http://www.coffeescript.org">CoffeeScript</a>.
-Install CoffeeScript globally (just once) with this command.</p>
-<pre><code>$ npm install -g coffee-script
-</code></pre>
-
-<p>Now you have the <code>cake</code> command.  Use it to build the app without running
-tests as follows.</p>
-<pre><code>$ cake app
-</code></pre>
-
-<p>See more options by running <code>cake</code> with no parameters.</p></div>
+<p>Point your browser to <code>localhost:8000/yourpage.html</code>.</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -6,15 +6,16 @@
 ### What can I build with this platform?
 
 The webLurch [architecture](developer.md#a-development-platform) has three
-tiers, applications at the top, built on the *Lurch Web Platform*, which in
-turn is built on the WYSIWYG editor [TinyMCE](http://www.tinymce.com).
+tiers:  The top tier are the applications, built on the middle tier, which
+is the *Lurch Web Platform*, which is built on the bottom tier, the WYSIWYG
+editor [TinyMCE](http://www.tinymce.com).
 
  * TinyMCE provides:
    * WYSIWYG editing of HTML content
      <br>![](tinymce-screenshot.png)
    * Extendability through custom toolbars, menus, dialogs, etc.
  * The *Lurch Web Platform* builds on that foundation, and provides:
-   * [In-cloud and in-browser storage](https://github.com/nathancarter/weblurch/app/storageplugin.litcoffee)
+   * [In-cloud and in-browser storage](https://github.com/lurchmath/lurch/blob/master/source/plugins/storageplugin.litcoffee)
      <br>![](save-commands.png)
    * A WYSIWYG math editing widget, [imported from
      here](https://github.com/foraker/tinymce_equation_editor)
@@ -22,7 +23,7 @@ turn is built on the WYSIWYG editor [TinyMCE](http://www.tinymce.com).
    * __*Groups*__, the most important contribution of the *Lurch Web
      Platform*, [explained below](#what-are-groups).
    * Facilities for computing with groups, such as
-     [a background computation/parallelization toolkit](https://github.com/nathancarter/weblurch/src/background.litcoffee)
+     [a background computation/parallelization toolkit](https://github.com/lurchmath/lurch/blob/master/source/auxiliary/background.litcoffee)
 
 ### What are groups?
 
@@ -53,10 +54,10 @@ Examples:
 paradigm in a blog post about the desktop version of
 Lurch.](http://lurchmath.org/2013/04/12/what-have-we-built-so-far-part-1-of-2/)
 
-## Demo Apps
+## Example Applications
 
-The content of this section got large enough to deserve
-[its own page](http://nathancarter.github.io/weblurch/app/index.html).
+There are six example applications built on this platform, each covered on
+the [example applications page](example-apps.md).
 
 ## Tutorial
 
@@ -72,34 +73,23 @@ Phases 1 and 2 on the list, and will know where to go to explore Phase 3.
 
 ### Phase 1: A first app (and a very simple one)
 
- 1. Get a copy of this repository set up on your local machine.
-    [See instructions here.](getting-started.md)  You may be able to forge
-    ahead even if you've never tried to learn [literate
-    CoffeeScript](www.coffeescript.org#literate), because the language is
-    extremely readable.  But you can learn its basics at that link before
-    proceeding if you prefer.
- 1. Ensure that you can build and run the Simple Example app, as follows:
-    * Compile the app and start a local web server by following the
-      repository setup instructions in the previous bullet point.
-    * Visit `http://localhost:8000/app/simple-example.html` to see the
-      simple example app in action.
- 1. Make a copy of that app to use as the basis for your own.
-    * In the `app/` subfolder, make copies of the files
-      `simple-example.html` and `simple-example-solo.litcoffee`, naming them
-      something like `myapp.html` and `myapp-solo.litcoffee`.
-    * Re-run `cake app` from the terminal to compile your new `.litcoffee`
-      file.  (You will need to do this after each change to the source.)
-      This should create several files that start with `app/myapp-solo`.
-    * Change the last `<script>` tag in the `.html` file you just created so
-      that it imports `myapp-solo.min.js` file rather than
-      `simple-example-solo.min.js`.
-    * Visit `http://localhost:8000/app/myapp.html` to ensure that this
-      worked.  It should look exactly like the simple app you already saw.
- 1. Edit `myapp-solo.min.js`.
+ 1. The easiest way to begin is with a working app.  Get a copy of the
+    [simple example app](https://github.com/lurchmath/lwp-example-simple) as
+    follows:
+    * Visit that page and use the green button to download a .zip of that
+      repository to your computer.  Extract its contents.
+    * Run `npm install` in that folder, then run `gulp` and be sure that it
+      can rebuild the app successfully.
+    * Start up a simple web server in that folder to serve yourself that app
+      so that we can be sure it's working:
+      `python -m SimpleHTTPServer 8000`
+    * Visit `http://localhost:8000` to see the simple example app running on
+      your machine.
+ 1. Edit `lwp-example-simple.litcoffee`.
     * The file begins with a lot of documentation, and then the first line
       of code is `setAppName 'ExampleApp'`.  Change the contents of the
       string to your app's name.
-    * Rebuild using `cake app` and revisit the page to ensure that the app
+    * Rebuild using `gulp` and revisit the page to ensure that the app
       name in the browser's tab has changed to your app's name.
 
 You've created a (very simple) app!  And you know how to change your app's
@@ -108,23 +98,23 @@ are possible?  Let's see.
 
 ### Phase 2: Changing or adding group types
 
-The individual bubbles you see in the document are the visual representation
-of what, under the hood, are called "groups."  Each app has a different set
-of group types that the user may insert in the document, depending on the
-needs of the application.  Examples:
+The individual bubbles you can add to the document in the example app are
+the visual representation of what, under the hood, are called "groups."
+Each app has a different set of group types that the user may insert in the
+document, depending on the needs of the application.  Examples:
 
  * In the simple app you have, there is only one group type, and it does
-   almost nothing.  (It does write to the browser console, but that's
-   hardly exciting.)
- * [The complex demo app](https://github.com/nathancarter/weblurch/app/complex-example-solo.litcoffee) defines two
-   group types, one for wrapping and evaluating expressions of arithmetic
-   and another for wrapping and doing simple computations on words.
- * In [the math demo app](https://github.com/nathancarter/weblurch/app/math-example-solo.litcoffee) there is only
-   one group type, for parsing and evaluating mathematical expressions.
- * In [the OpenMath Content Dictionary demo
-   app](https://github.com/nathancarter/weblurch/app/openmath-example-solo.litcoffee) there is only one group
-   type, but it can have any of over a dozen different purposes, editable
-   using the context menu on each individual group.
+   very litte:  It reports the size of its contents and dumps some
+   debugging information to the browser console.
+ * [The complex demo app](https://github.com/lurchmath/lwp-example-complex)
+   defines two group types, one for wrapping and evaluating expressions of
+   arithmetic and another for wrapping and doing simple computations on
+   words.
+ * [The math demo app](https://github.com/lurchmath/lwp-example-math) has
+   nly one group type, for parsing and evaluating mathematical expressions.
+ * [The OpenMath Content Dictionary Editor](https://github.com/lurchmath/lwp-example-openmath)
+   has only one group type, but it can have any of over a dozen different
+   purposes, editable using the context menu on each individual group.
 
 If we look at the code in your app that defines group types, stripping away
 all the documentation, it looks like the following.
@@ -144,7 +134,7 @@ window.groupTypes = [
 ```
 
 All of this is fully documented [in the original
-file](https://github.com/nathancarter/weblurch/app/simple-example-solo.litcoffee#define-one-group-type), so I do
+file](https://github.com/lurchmath/lwp-example-simple/blob/master/lwp-example-simple.litcoffee#define-one-group-type), so I do
 not repeat here what any of it means.  But note that this is simply the
 assignment to a global variable of an array of group type data.  You could
 extend it to add another group type as follows.
@@ -183,15 +173,15 @@ button on the toolbar.
 
 By simply extending the list above, you can define any set of group types
 you see fit in your application.  Note that the open and close HTML can be
-arbitrary HTML, including (small) images and font colors and styles.
+arbitrary HTML, including (small) images, font colors, and styles.
 
 The only question that remains is how to make your groups do something
 useful.
 
 ### Phase 3: Adding interactivity to your groups
 
-What else can your app do?  Here are many examples, each with a link to
-where you can read more information and see example code.
+What else can groups do?  Here are many examples, each with a link to where
+you can read more information and see example code.
 
 __Report information about the group on the bubble's tag__
 
@@ -202,7 +192,7 @@ __Report information about the group on the bubble's tag__
    information about your group, such as its text content, or whether it
    has any groups inside of it.  The API for a Group object is [documented
    in the source code for the Groups
-   Plugin](https://github.com/nathancarter/weblurch/app/groupsplugin.litcoffee).
+   Plugin](https://github.com/lurchmath/lurch/blob/master/source/plugins/groupsplugin.litcoffee).
 
 __Customize a group's color__
 
@@ -223,14 +213,14 @@ __Find what groups are in the document__
 
  * For a complete answer, see the API for the `Groups` class (different
    from the `Group` class!) in [the Groups
-   Plugin](https://github.com/nathancarter/weblurch/app/groupsplugin.litcoffee).  Since that file is large, I
-   give highlights here.
+   Plugin](https://github.com/lurchmath/lurch/blob/master/source/plugins/groupsplugin.litcoffee).
+   Since that file is large, I give highlights here.
  * Access the one, global `Groups` object using the code
    `tinymce.activeEditor.Groups`.  I call this object `Groups` hereafter.
  * Get the array of all group IDs in your document (in the order their
    open boundaries appear in the document) with `Groups.ids()`.
- * Get the group object from its ID by indexing `Groups` as if it were an
-   array, as in `Groups[putIdHere]`.
+ * Get a group object from its ID by indexing `Groups` as if it were an
+   array, as in `Groups[someID]` or `Groups[0]`.
  * For any group `G`, get the group containing it with `G.parent`, which
    will be null if the group is top-level in the document, or if it was
    just created in the document (instants ago) and the editor has
@@ -246,20 +236,19 @@ __Pushing complex computations into the background__
    computations into one or more background threads, with parallelization
    managed efficiently for you.  This lengthy topic is covered in two
    files:
- * [The "complex example" demo app](https://github.com/nathancarter/weblurch/app/complex-example-solo.litcoffee)
+ * [The "complex example" demo app](https://github.com/lurchmath/lwp-example-complex)
    pushes some computations into the background, and you can follow its
    example code.
- * [The background module](https://github.com/nathancarter/weblurch/src/background.litcoffee) documents the full
-   API that's being leveraged by that demo app.
+ * [The background module](https://github.com/lurchmath/lurch/blob/master/source/auxiliary/background.litcoffee)
+   documents the full API that's being leveraged by that demo app.
 
 __Extending the menus that appear when users right-click a group or click
 its bubble tag__
 
  * Extending a group's context menu is done by providing a
-   `contextMenuItems` function in the group type definition.  Search the
-   repository for that phrase to see examples.  One appears in [the
-   source code for the complex example demo
-   app](https://github.com/nathancarter/weblurch/app/complex-example-solo.litcoffee).
+   `contextMenuItems` function in the group type definition.  For an
+   example, look for that term in [the source code for the complex example
+   demo app](https://github.com/lurchmath/lwp-example-complex).
  * Extending a group's tag menu is done by providing a `tagMenuItems`
    function that behaves exactly the same way, but may choose to return a
    different list of menu items.
@@ -269,7 +258,7 @@ __Adding new buttons to the editor toolbar__
  * This is done by assigning to the global object
    `window.groupToolbarButtons`.
  * [See an example
-   here.](https://github.com/nathancarter/weblurch/src/xml-groups-solo.litcoffee#define-one-toolbar-button)
+   here.](https://github.com/lurchmath/lurch/blob/master/source/auxiliary/xml-groups.litcoffee#define-one-toolbar-button)
 
 __Adding new menu items to the editor's menus__
 
@@ -278,14 +267,14 @@ __Adding new menu items to the editor's menus__
  * There is not an example of this at the moment, but it functions very
    similar to the previous bullet point, about toolbar buttons.  The
    implementation appears in
-   [the main setup code](https://github.com/nathancarter/weblurch/app/setup.litcoffee).
+   [the main setup code](https://github.com/lurchmath/lurch/blob/master/source/auxiliary/setup.litcoffee).
 
 __Showing dialog boxes__
 
  * [TinyMCE provides a few ways to show dialog boxes containing plain
    text](http://www.tinymce.com/wiki.php/api4:class.tinymce.WindowManager).
  * If your dialog box must contain more than just plain text, see
-   [the Dialogs plugin](https://github.com/nathancarter/weblurch/app/dialogsplugin.litcoffee).
+   [the Dialogs plugin](https://github.com/lurchmath/lurch/blob/master/source/plugins/dialogsplugin.litcoffee).
 
 __Adding decorations to group boundaries__
 
@@ -296,7 +285,7 @@ __Adding decorations to group boundaries__
    flag it in an obvious way, as the <font color="red">&#10006;</font>
    does in the following example from
    [the OpenMath Content Dictionary Editor demo
-   app](https://github.com/nathancarter/weblurch/app/openmath-example-solo.litcoffee).
+   app](https://github.com/lurchmath/lwp-example-openmath).
    <br>![](bubble-with-error.png)<br>
    This is a special case of "decorating" a group.  To add decorations to
    a group `G`, you have the following API.
