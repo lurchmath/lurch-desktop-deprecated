@@ -1,1 +1,64 @@
-site_name: Lurch
+site_name: Lurch Documentation
+pages:
+- Home: index.md
+#
+#-----
+#
+#  The following section represents the User Guide.
+#  It is commented out because we haven't yet built the main app
+#  in this new repository, because we are undergoing a major
+#  re-design of it.  Once that is done and we begin to build the
+#  main app in this new repository, we can begin to update the
+#  User Guide to teach people its interface.
+#
+#-----
+#
+#- Authors:
+#    - User guide:
+#        - Introduction: user-guide/index.md
+#        - Basics:
+#            - Overview: user-guide/basics-intro.md
+#            - Part 1, The editor: user-guide/basics-1.md
+#            - Part 2, Expressions and canonical form: user-guide/basics-2.md
+#            - Part 3, Connections and attributes: user-guide/basics-3.md
+#            - Part 4, Steps and Reasons: user-guide/basics-4.md
+#            - Part 5, Rules in Dependencies: user-guide/basics-5.md
+#            - Part 6, Connecting Dependencies: user-guide/basics-6.md
+#        - Technicalities:
+#            - Overview: user-guide/tech-intro.md
+#            - Part 1, Code attributes: user-guide/tech-1.md
+#            - Part 2, Code-based rules: user-guide/tech-2.md
+#    - Blog/website embedding: embedding.md
+- Developers:
+    - Introduction: developer.md
+    - Getting started: getting-started.md
+    - Tutorial: dev-tutorial.md
+    - Project plan: plan.md
+    - Bug fix/enhancement list: bugs-and-enhancements.md
+- Examples and Demos:
+    - Full list: example-apps.md
+    - Lean demo app:
+        - Tutorial Part 1: lean-example/tutorial-1.md
+        - Tutorial Part 2: lean-example/tutorial-2.md
+        - Tutorial Part 3: lean-example/tutorial-3.md
+        - Tutorial Part 4: lean-example/tutorial-4.md
+        - Tutorial Part 5: lean-example/tutorial-5.md
+        - Tutorial Part 6: lean-example/tutorial-6.md
+        - Tutorial Part 7: lean-example/tutorial-7.md
+        - Tutorial Part 8: lean-example/tutorial-8.md
+#
+#-----
+#
+#  The following section imports the script that lets us embed
+#  live Lurch documents into this documentation.  It is from the
+#  old source code repository, and hasn't been updated for this one
+#  yet, because we don't yet build a main app in this repository.
+#  Once we do, we will update the embed script, and then we can
+#  import it into our documentation again using a line like the one
+#  below.
+#
+#-----
+#
+#extra_javascript:
+#- http://nathancarter.github.io/weblurch/app/lurch-embed-solo.min.js
+dev_addr: 127.0.0.1:8888

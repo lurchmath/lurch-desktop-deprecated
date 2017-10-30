@@ -4,9 +4,59 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2017-10-25</lastmod>
+     <lastmod>2017-10-30</lastmod>
      <changefreq>daily</changefreq>
     </url>
+    
+
+    
+        
+    <url>
+     <loc>/developer/</loc>
+     <lastmod>2017-10-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/getting-started/</loc>
+     <lastmod>2017-10-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/dev-tutorial/</loc>
+     <lastmod>2017-10-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/plan/</loc>
+     <lastmod>2017-10-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>/bugs-and-enhancements/</loc>
+     <lastmod>2017-10-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>/example-apps/</loc>
+     <lastmod>2017-10-30</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc></loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
     
 
 </urlset>
