@@ -8,7 +8,7 @@ cakefile](../cakefile.litcoffee) for details.
 
 Here we import the module we're about to test.
 
-    require '../src/utils'
+    require '../source/modules/utils'
 
 ## JSON.equals
 
