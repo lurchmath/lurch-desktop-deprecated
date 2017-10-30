@@ -166,7 +166,7 @@ Create a "test" task to run unit tests.  So far it only runs one of the
 unit tests.  The reason for this is that the others are out-of-date, and
 require a main app page, which this repository does not yet build.
 
-    gulp.task 'test', ->
+    gulp.task 'test', [ 'release-build' ], ->
         gulp.src [
             'unit-tests/utils-spec.litcoffee'
         ], read : no
