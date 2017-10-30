@@ -14,6 +14,10 @@ We use the following namespace.
     window.LurchEmbed = { }
 
 The default location of the main webLurch application is the following.
+This is from our old repository for now, and will be updated once we begin
+writing a main application in the new repository (which will obviously
+include re-using a lot of the code from the old repository).  For now,
+however, we continue to use the old URL.
 
     window.LurchEmbed.defaultURL =
         'http://nathancarter.github.io/weblurch/app/app.html'
@@ -76,5 +80,5 @@ that the content needs to be translated from Lurch shorthand, and will
 perform that translation, simultaneously removing the wrapper.  This is
 useful for writing Lurch document content in a human-readable form.  See
 [the source code for document
-import/export](main-app-import-export-solo.litcoffee) for details on Lurch
-shorthand.
+import/export](../main-app/main-app-import-export-solo.litcoffee) for
+details on Lurch shorthand.
