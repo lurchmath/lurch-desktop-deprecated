@@ -79,8 +79,8 @@ It lets users interact with the theorem prover
 [Lean](https://leanprover.github.io) in a word-processing environment with
 nice visual feedback.
 
- * [Read the tutorial](lean-example/tutorial-1.md)
  * [Launch the app](https://lurchmath.github.io/lwp-example-lean)
+ * [Read the tutorial](https://lurchmath.github.io/lwp-example-lean/site)
  * [View source code](https://github.com/lurchmath/lwp-example-lean)
 
 ## Main App

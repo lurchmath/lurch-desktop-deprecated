@@ -41,19 +41,9 @@
      <changefreq>daily</changefreq>
     </url>
         
-    
-
-    
-        
     <url>
      <loc>/example-apps/</loc>
      <lastmod>2017-10-30</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc></loc>
-     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
