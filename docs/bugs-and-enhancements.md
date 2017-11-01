@@ -49,12 +49,6 @@ the main project plan without these bug fixes or enhancements.
    The bug just mentioned has since been closed, and suggests that it may
    have been fixed in TinyMCE 4.x; check to see.
 
-### Other
-
- * In the Lean example app, `termGroupToCode` uses `contentsAsText`, which
-   ignores paragraph breaks, as if they were not whitespace; this is
-   problematic.  Use `contentAsCode` instead.
-
 ## Enhancements
 
 ### MathQuill parsing
@@ -172,35 +166,3 @@ topics.
    the few missing tests.
  * If you ever need to export PDFs of Lurch documents, consider
    [jsPDF](https://github.com/MrRio/jsPDF).
- * In the Lean example app:  How might we work Lean's `notation`
-   definitions in with MathQuill widgets in the document?
-
-### Enhancements to the XML Groups module and/or demo app
-
- * Make an option for whether to show tags even when the cursor is not in
-   the bubble.  If so, make the open decoration of every bubble
-   "#{tagName}:".
- * The validation routine for that demo app is one routine with four
-   independent checks.  That's perfect for breaking into four separate
-   routines an enqueueing all into the background as separate tasks.  This
-   would be an excellent test of that model, which you plan to use in the
-   real webLurch.
- * Each tag's data can specify a set of Group attributes that should be
-   copied into the XML output as element attributes.  Then clients can
-   create their own UI for editing such attributes, and just store them in
-   the Groups themselves, content with the fact that the `xml-groups` module
-   will carry that data over into the XML output.
- * Add support to the Groups package for accepting click and/or double-click
-   events on open/close groupers, and passing them to the Group type for
-   handling.  Here is the code the MathQuill plugin uses for this purpose.
-   Note the selector in the second line.
-```
-editor.on 'init', ->
-    ( $ editor.getDoc() ).on 'click', '.rendered-latex', ( event ) ->
-        event.stopPropagation()
-        # here, "this" is the element that received the click event
-```
- * Use the feature from the previous bullet point to give more detailed
-   feedback about failed structural rules.
- * Create an importer that reads in OM CDs and creates documents from them
-   that use Groups.  This would then truly be an OM CD Editor!
