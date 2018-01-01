@@ -18,8 +18,8 @@
             <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
             <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
         <![endif]-->
-	
-	<script src="../js/jquery-1.10.2.min.js"></script>
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
         <script src="../js/bootstrap-3.0.3.min.js"></script>
         <script src="../js/highlight.pack.js"></script> 
     </head>
@@ -158,12 +158,6 @@ the main project plan without these bug fixes or enhancements.</p>
    The bug just mentioned has since been closed, and suggests that it may
    have been fixed in TinyMCE 4.x; check to see.</li>
 </ul>
-<h3 id="other">Other</h3>
-<ul>
-<li>In the Lean example app, <code>termGroupToCode</code> uses <code>contentsAsText</code>, which
-   ignores paragraph breaks, as if they were not whitespace; this is
-   problematic.  Use <code>contentAsCode</code> instead.</li>
-</ul>
 <h2 id="enhancements">Enhancements</h2>
 <h3 id="mathquill-parsing">MathQuill parsing</h3>
 <ul>
@@ -279,40 +273,6 @@ topics.</p>
    the few missing tests.</li>
 <li>If you ever need to export PDFs of Lurch documents, consider
    <a href="https://github.com/MrRio/jsPDF">jsPDF</a>.</li>
-<li>In the Lean example app:  How might we work Lean's <code>notation</code>
-   definitions in with MathQuill widgets in the document?</li>
-</ul>
-<h3 id="enhancements-to-the-xml-groups-module-andor-demo-app">Enhancements to the XML Groups module and/or demo app</h3>
-<ul>
-<li>Make an option for whether to show tags even when the cursor is not in
-   the bubble.  If so, make the open decoration of every bubble
-   "#{tagName}:".</li>
-<li>The validation routine for that demo app is one routine with four
-   independent checks.  That's perfect for breaking into four separate
-   routines an enqueueing all into the background as separate tasks.  This
-   would be an excellent test of that model, which you plan to use in the
-   real webLurch.</li>
-<li>Each tag's data can specify a set of Group attributes that should be
-   copied into the XML output as element attributes.  Then clients can
-   create their own UI for editing such attributes, and just store them in
-   the Groups themselves, content with the fact that the <code>xml-groups</code> module
-   will carry that data over into the XML output.</li>
-<li>Add support to the Groups package for accepting click and/or double-click
-   events on open/close groupers, and passing them to the Group type for
-   handling.  Here is the code the MathQuill plugin uses for this purpose.
-   Note the selector in the second line.</li>
-</ul>
-<pre><code>editor.on 'init', -&gt;
-    ( $ editor.getDoc() ).on 'click', '.rendered-latex', ( event ) -&gt;
-        event.stopPropagation()
-        # here, &quot;this&quot; is the element that received the click event
-</code></pre>
-
-<ul>
-<li>Use the feature from the previous bullet point to give more detailed
-   feedback about failed structural rules.</li>
-<li>Create an importer that reads in OM CDs and creates documents from them
-   that use Groups.  This would then truly be an OM CD Editor!</li>
 </ul></div>
         </div>
 
@@ -321,8 +281,11 @@ topics.</p>
             <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>var base_url = '..';</script>
-        <script data-main="../mkdocs/js/search.js" src="../mkdocs/js/require.js"></script>
-        <script src="../js/base.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+        <script src="../js/base.js"></script>
+        <script src="../search/require.js"></script>
+        <script src="../search/search.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -345,7 +308,47 @@ topics.</p>
             </div>
         </div>
     </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&larr;</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>&rarr;</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
+
 
     </body>
 </html>

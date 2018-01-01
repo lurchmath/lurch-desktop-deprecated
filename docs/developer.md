@@ -21,7 +21,7 @@ bottom up.
   <tr>
     <td>Applications:</td>
     <td align=center><i>Lurch Proof Checker</i></td>
-    <td align=center><a href='dev-tutorial.md'>Demo apps</a></td>
+    <td align=center><a href='../dev-tutorial'>Demo apps</a></td>
     <td align=center>Your app</td>
   </tr>
   <tr>
