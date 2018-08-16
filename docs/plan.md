@@ -325,4 +325,5 @@ When you come to release the website for Lurch 1.0, built on the Lurch Web
 Platform, make Lurch citeable as research software, using
 [this advice](https://research-software.org/citation/).  Then advertise on
 the Lurch website how to cite it, and use that citation in your own papers
-about Lurch as well.
+about Lurch as well.  It may also be appropriate to consider publishing
+about Lurch in [this journal](https://openresearchsoftware.metajnl.com/).
