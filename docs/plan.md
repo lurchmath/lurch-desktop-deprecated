@@ -320,3 +320,9 @@ documentation so that someone who does not know how to read a test spec file
 could learn it from that documentation.  Probably the best way to do this is
 to add general documentation to the simplest/main test spec, and then
 reference that general documentation from all other test specs.
+
+When you come to release the website for Lurch 1.0, built on the Lurch Web
+Platform, make Lurch citeable as research software, using
+[this advice](https://research-software.org/citation/).  Then advertise on
+the Lurch website how to cite it, and use that citation in your own papers
+about Lurch as well.
