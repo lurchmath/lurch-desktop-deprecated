@@ -95,7 +95,7 @@ Lurch Web Platform.
 Create a task to compile the large file created by the previous task.  We
 use minification and source maps.
 
-    gulp.task 'lwp-build', [ 'lwp-source' ], ->
+    gulp.task 'lwp-build', gulp.series 'lwp-source', ->
         compileAndMinify 'release/lurch-web-platform.litcoffee', 'release/'
 
 Create a set of tasks to compile (with minification and source maps) a set
@@ -118,14 +118,14 @@ that exist), and then a task for compiling those same source files.
         gulp.src auxFiles
         gulp.dest 'release/'
     ]
-    gulp.task 'aux-build', [ 'aux-copy' ], ->
+    gulp.task 'aux-build', gulp.series 'aux-copy', ->
         compileAndMinify auxFiles, 'release/'
 
 We must also treat the background module specially:  First, it depends upon
 `aux-build` having completed, so that we can use `worker.js` as a resource.
 Second, it embeds that resource into the background module before compiling.
 
-    gulp.task 'aux-with-bg', [ 'aux-build' ], ->
+    gulp.task 'aux-with-bg', gulp.series 'aux-build', ->
         embedAsVariableIn 'release/worker.js', 'text/javascript',
             'source/auxiliary/background.litcoffee', '    workerScript',
             "'worker.js'", 'release/background.litcoffee'
@@ -138,11 +138,8 @@ above, plus one for copying all `source/assets` into the release folder.
         gulp.src [ 'source/assets/**/*', '!source/assets/README.md' ]
         gulp.dest 'release'
     ]
-    gulp.task 'release-build', [
-        'lwp-build'
-        'aux-with-bg'
-        'copy-assets'
-    ]
+    gulp.task 'release-build', gulp.series \
+        'lwp-build', 'aux-with-bg', 'copy-assets'
 
 ## Other build tasks
 
@@ -166,7 +163,7 @@ Create a "test" task to run unit tests.  So far it only runs one of the
 unit tests.  The reason for this is that the others are out-of-date, and
 require a main app page, which this repository does not yet build.
 
-    gulp.task 'test', [ 'release-build' ], ->
+    gulp.task 'test', gulp.series 'release-build', ->
         gulp.src [
             'unit-tests/utils-spec.litcoffee'
         ], read : no
@@ -184,8 +181,5 @@ require a main app page, which this repository does not yet build.
 
 Create a default task that runs all other tasks.
 
-    gulp.task 'default', [
-        'release-build'
-        'exp-build'
-        'docs'
-    ]
+    gulp.task 'default', gulp.series \
+        'release-build', 'exp-build', 'docs'
