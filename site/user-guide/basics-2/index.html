@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Introduction - Lurch Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Basics, Part 2: Expressions and canonical form - Lurch Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Lurch Documentation</a>
+                <a class="navbar-brand" href="../..">Lurch Documentation</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,34 +34,34 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developers <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Introduction</a>
+    <a href="../../developer/" class="dropdown-item">Introduction</a>
 </li>
                                     
 <li>
-    <a href="../getting-started/" class="dropdown-item">Getting started</a>
+    <a href="../../getting-started/" class="dropdown-item">Getting started</a>
 </li>
                                     
 <li>
-    <a href="../dev-tutorial/" class="dropdown-item">Tutorial</a>
+    <a href="../../dev-tutorial/" class="dropdown-item">Tutorial</a>
 </li>
                                     
 <li>
-    <a href="../plan/" class="dropdown-item">Project plan</a>
+    <a href="../../plan/" class="dropdown-item">Project plan</a>
 </li>
                                     
 <li>
-    <a href="../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
+    <a href="../../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
 </li>
                                     
 <li>
-    <a href="../example-apps/" class="dropdown-item">Example apps</a>
+    <a href="../../example-apps/" class="dropdown-item">Example apps</a>
 </li>
                                 </ul>
                             </li>
@@ -73,16 +73,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../getting-started/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -101,21 +91,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lurch-developer-docs" class="nav-link">Lurch Developer Docs</a>
+            <li class="nav-item" data-level="1"><a href="#basics-part-2-expressions-and-canonical-form" class="nav-link">Basics, Part 2: Expressions and canonical form</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#a-development-platform" class="nav-link">A Development Platform</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#architecture" class="nav-link">Architecture</a>
+            <li class="nav-item" data-level="2"><a href="#whats-an-expression" class="nav-link">What's an expression?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#getting-involved" class="nav-link">Getting involved</a>
+            <li class="nav-item" data-level="2"><a href="#inserting-expressions" class="nav-link">Inserting expressions</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#repository-details" class="nav-link">Repository details</a>
+            <li class="nav-item" data-level="2"><a href="#canonical-form" class="nav-link">Canonical form</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -126,87 +112,62 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lurch-developer-docs">Lurch Developer Docs</h1>
-<h2 id="a-development-platform">A Development Platform</h2>
-<p>Rewriting the Lurch desktop app for the web involves building many
-supporting tools that we call the <em>Lurch Web Platform.</em>  Other developers
-can build math-enabled web apps on the same platform, which improves the
-platform and grows the community.</p>
-<p>We've made the architecture simple and the learning curve small.  <a href="../dev-tutorial/">See the
-demo applications and tutorial to start developing.</a>  We
-are currently using the platform to build Lurch on the web.</p>
-<h2 id="architecture">Architecture</h2>
-<p>The following table illustrates the software architecture.  Read it from the
-bottom up.</p>
-<table>
-  <tr>
-    <td>Applications:</td>
-    <td align=center><i>Lurch Proof Checker</i></td>
-    <td align=center><a href='../dev-tutorial'>Demo apps</a></td>
-    <td align=center>Your app</td>
-  </tr>
-  <tr>
-    <td>Platform:</td>
-    <td align=center colspan=3><i>Lurch Web Platform</i></td>
-  </tr>
-  <tr>
-    <td>Foundation:</td>
-    <td align=center colspan=3><a href='http://www.tinymce.com'>TinyMCE
-        editor</a></td>
-  </tr>
-</table>
-
-<h2 id="getting-involved">Getting involved</h2>
-<p>If you're interested in helping out with development of this project (e.g.,
-upstream commits if you use the platform), contact
-<a href="mailto:ncarter@bentley.edu">Nathan Carter</a>.</p>
-<h2 id="repository-details">Repository details</h2>
-<p>All source code is in <a href="http://coffeescript.org/#literate">literate
-CoffeeScript</a>.  This makes it highly
-readable, especially on GitHub, which renders it as MarkDown.  I have tried
-to be verbose in my comments, to help new readers.</p>
-<p>Repository overview:</p>
+<h1 id="basics-part-2-expressions-and-canonical-form">Basics, Part 2: Expressions and canonical form</h1>
+<h2 id="whats-an-expression">What's an expression?</h2>
+<p>A section of text in a Lurch document can be marked as an <em>expression.</em>
+Lurch pays attention to the content of expressions, trying to interpret them
+as meaningful mathematics (perhaps an algebraic equation, or a statement
+from logic or analysis, or perhaps the name of a theorem being cited, for
+example).</p>
+<h2 id="inserting-expressions">Inserting expressions</h2>
+<p>You can create expressions in your document in any of the following ways.</p>
 <ul>
-<li><code>/</code> (root folder)<ul>
-<li><code>package.json</code> - used by <a href="http://nodejs.org">node.js</a> to install
-  dependencies  (The app runs in a browser, not node.js.  This is just
-  for dev tools.)</li>
-<li><code>gulpfile.litcoffee</code> define the build process, which uses
-  <a href="https://gulpjs.com/">gulp</a></li>
-<li><code>mkdocs.yml</code> defines how this documentation site is built, which uses
-  <a href="http://www.mkdocs.org/">mkdocs</a></li>
+<li>Click the "expression" toolbar button to insert an empty expression at
+   the cursor, then begin typing to fill it in.  The toolbar button looks
+   like this:  <font color='#996666'>[ ]</font></li>
+<li>Use the "expression" keyboard shortcut (Ctrl+[ on PCs, or Cmd+[ on Macs,
+   which behaves exactly like the "expression" toolbar button) to insert an
+   empty expression, then type.</li>
+<li>Use a LaTeX-like keyboard shortcut (such as <code>\[</code> followed by the
+   spacebar) to open a new expression, with the cursor placed immediately
+   inside.</li>
+<li>Select the section of the document (usually very short) that the user
+   wishes to convert into an expression, then click the "expression"
+   toolbar button so that the software will then begin treating the
+   selection as an expression.</li>
+<li>Same as the previous, except using the keyboard shortcut instead of the
+   toolbar button.</li>
+<li>Expression boundaries can be dragged using the mouse.  This is useful
+   when you have formed an expression, but then find that it should have
+   enclosed a bit more or less text.  Especially if you have
+   decorated/attributed the expression (as described later in this User
+   Guide) and do not wish to repeat that work.  Dragging an expression's
+   boundaries in a way that creates invalid nesting (one boundary inside
+   another expression, the other not) will result in removal of the
+   offending expression.</li>
 </ul>
-</li>
-<li><code>docs</code><ul>
-<li>All source files (Markdown) for this documentation site, which
-  <a href="http://www.mkdocs.org/">mkdocs</a> compiles into the <code>site</code> folder.</li>
-</ul>
-</li>
-<li><code>site</code><ul>
-<li>Compiled version of <code>doc-src/</code> folder, for hosting on GitHub Pages;
-  you are seeing its contents here on this site</li>
-</ul>
-</li>
-<li><code>source</code><ul>
-<li>Source code files used for building the platform.</li>
-<li>The build process compiles these into files in the <code>release</code> folder.</li>
-</ul>
-</li>
-<li><code>unit-tests</code><ul>
-<li>Unit tests.</li>
-<li>To run them, execute <code>gulp test</code> in the main folder, after you've set
-  it up as per <a href="../getting-started/">the Getting Started page</a>.</li>
-</ul>
-</li>
-<li><code>release</code><ul>
-<li>Demo apps and the plugins that create them reside here.  You can try
-  them out live on the web; see
-  <a href="../dev-tutorial/">the demo apps and tutorials page</a>.</li>
-<li>The <em>Lurch Proof Checker</em> is being rewritten for the web and it will
-  live in this folder later.</li>
-</ul>
-</li>
-</ul></div>
+<h2 id="canonical-form">Canonical form</h2>
+<p>A few quick foundational definitions:</p>
+<ol>
+<li>An <em>atomic expression</em> is one with no other expressions inside it.</li>
+<li>A <em>compound expression</em> is one with at least one expression inside it.</li>
+<li>Content not inside an atomic expression is informally called <em>flarf,</em>
+    to signify its lack of importance:</li>
+<li>The <em>cannoical form</em> of an expression is obtained by deleting all flarf.</li>
+</ol>
+<p>Here are some examples of these definitions.</p>
+<div class='lurch-embed'><shorthand>
+<p>Example atomic expression: <e>Hello.</e>  (Click to place your cursor
+    inside it to see the bubble UI appear around it.  Bubbles are shown to
+    highlight expressions only when your cursor is inside them.)</p>
+<p>Example compound expression: <e><e>an inner expression</e>
+    <e>another inner expression</e></e>  (Try placing your cursor at various
+    spots within the inner and outer expressions.)</p>
+<p>This text is flarf.
+    <e>So is this text, <e>but this is not flarf.</e></e></p>
+<p>The canonical form of the expression in the previous paragraph
+    is therefore <e><e>but this is not flarf.</e></e></p>
+</shorthand></div></div>
             </div>
         </div>
 
@@ -215,11 +176,11 @@ to be verbose in my comments, to help new readers.</p>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Introduction - Lurch Documentation</title>
+        <title>Embedding Lurch in a website or blog - Lurch Documentation</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -36,12 +36,12 @@
                             <li class="navitem">
                                 <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developers <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Introduction</a>
+    <a href="../developer/" class="dropdown-item">Introduction</a>
 </li>
                                     
 <li>
@@ -73,16 +73,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../getting-started/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -101,21 +91,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lurch-developer-docs" class="nav-link">Lurch Developer Docs</a>
+            <li class="nav-item" data-level="1"><a href="#embedding-lurch-in-a-website-or-blog" class="nav-link">Embedding Lurch in a website or blog</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#a-development-platform" class="nav-link">A Development Platform</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#architecture" class="nav-link">Architecture</a>
+            <li class="nav-item" data-level="2"><a href="#overview" class="nav-link">Overview</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#getting-involved" class="nav-link">Getting involved</a>
+            <li class="nav-item" data-level="2"><a href="#how-to" class="nav-link">How To</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#repository-details" class="nav-link">Repository details</a>
+            <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -126,87 +112,57 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lurch-developer-docs">Lurch Developer Docs</h1>
-<h2 id="a-development-platform">A Development Platform</h2>
-<p>Rewriting the Lurch desktop app for the web involves building many
-supporting tools that we call the <em>Lurch Web Platform.</em>  Other developers
-can build math-enabled web apps on the same platform, which improves the
-platform and grows the community.</p>
-<p>We've made the architecture simple and the learning curve small.  <a href="../dev-tutorial/">See the
-demo applications and tutorial to start developing.</a>  We
-are currently using the platform to build Lurch on the web.</p>
-<h2 id="architecture">Architecture</h2>
-<p>The following table illustrates the software architecture.  Read it from the
-bottom up.</p>
-<table>
-  <tr>
-    <td>Applications:</td>
-    <td align=center><i>Lurch Proof Checker</i></td>
-    <td align=center><a href='../dev-tutorial'>Demo apps</a></td>
-    <td align=center>Your app</td>
-  </tr>
-  <tr>
-    <td>Platform:</td>
-    <td align=center colspan=3><i>Lurch Web Platform</i></td>
-  </tr>
-  <tr>
-    <td>Foundation:</td>
-    <td align=center colspan=3><a href='http://www.tinymce.com'>TinyMCE
-        editor</a></td>
-  </tr>
-</table>
-
-<h2 id="getting-involved">Getting involved</h2>
-<p>If you're interested in helping out with development of this project (e.g.,
-upstream commits if you use the platform), contact
-<a href="mailto:ncarter@bentley.edu">Nathan Carter</a>.</p>
-<h2 id="repository-details">Repository details</h2>
-<p>All source code is in <a href="http://coffeescript.org/#literate">literate
-CoffeeScript</a>.  This makes it highly
-readable, especially on GitHub, which renders it as MarkDown.  I have tried
-to be verbose in my comments, to help new readers.</p>
-<p>Repository overview:</p>
+<h1 id="embedding-lurch-in-a-website-or-blog">Embedding Lurch in a website or blog</h1>
+<h2 id="overview">Overview</h2>
+<p>When writing a web page or blog about introductory proofs, or about Lurch
+itself, authors will want to show examples of small documents in a live
+Lurch application.  Validation will be functioning and showing its results,
+and users can explore the example interactively as well, possibly even
+experimenting and/or making changes. We call this <em>embedding</em> Lurch in a web
+page or blog.</p>
+<h2 id="how-to">How To</h2>
+<p>The author must do three things to embed Lurch in a blog/website:</p>
 <ul>
-<li><code>/</code> (root folder)<ul>
-<li><code>package.json</code> - used by <a href="http://nodejs.org">node.js</a> to install
-  dependencies  (The app runs in a browser, not node.js.  This is just
-  for dev tools.)</li>
-<li><code>gulpfile.litcoffee</code> define the build process, which uses
-  <a href="https://gulpjs.com/">gulp</a></li>
-<li><code>mkdocs.yml</code> defines how this documentation site is built, which uses
-  <a href="http://www.mkdocs.org/">mkdocs</a></li>
+<li>Include <a href="https://code.jquery.com/">jQuery</a> in the page, because the Lurch
+   embedding script in the following bullet point depends upon it.</li>
+<li>Include this code at the top of your webpage, or in the scripts list for
+   your blog:</li>
+</ul>
+<pre><code class="language-html">&lt;script src='http://nathancarter.github.io/weblurch/app/lurch-embed-solo.min.js'&gt;&lt;/script&gt;
+</code></pre>
+<ul>
+<li>Create DIVs (or other blocks) with the class "lurch-embed" and place into
+   them your content.  You can directly paste content copied directly from
+   the Lurch web app, or you can write in
+   <a href="https://github.com/nathancarter/weblurch/app/main-app-import-export-solo.litcoffee#lurch-shorthand">Lurch shorthand</a>.</li>
+</ul>
+<pre><code class="language-html">&lt;div class='lurch-embed'&gt;
+    &lt;p&gt;Here is a Lurch document with two paragraphs, but no expressions.&lt;/p&gt;
+    &lt;p&gt;To see how to embed expressions, check out the examples below.&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+<h2 id="examples">Examples</h2>
+<ol>
+<li>Embedding a very tiny Lurch document into a webpage by pasting raw Lurch
+    HTML directly into the page source (not very human-readable).<ul>
+<li><a href="http://nathancarter.github.io/weblurch/test/embedding/embed-test.html">Live view</a></li>
+<li><a href="https://github.com/nathancarter/weblurch/test/embedding/embed-test.html">Source code</a></li>
 </ul>
 </li>
-<li><code>docs</code><ul>
-<li>All source files (Markdown) for this documentation site, which
-  <a href="http://www.mkdocs.org/">mkdocs</a> compiles into the <code>site</code> folder.</li>
+<li>Embedding two different (small) documents into the same webpage, and
+    writing each in Lurch shorthand (more human-readable).
+    See link above for instructions on writing in Lurch shorthand.<ul>
+<li><a href="http://nathancarter.github.io/weblurch/test/embedding/shorthand-test.html">Live view</a></li>
+<li><a href="https://github.com/nathancarter/weblurch/test/embedding/shorthand-test.html">Source code</a></li>
 </ul>
 </li>
-<li><code>site</code><ul>
-<li>Compiled version of <code>doc-src/</code> folder, for hosting on GitHub Pages;
-  you are seeing its contents here on this site</li>
-</ul>
-</li>
-<li><code>source</code><ul>
-<li>Source code files used for building the platform.</li>
-<li>The build process compiles these into files in the <code>release</code> folder.</li>
-</ul>
-</li>
-<li><code>unit-tests</code><ul>
-<li>Unit tests.</li>
-<li>To run them, execute <code>gulp test</code> in the main folder, after you've set
-  it up as per <a href="../getting-started/">the Getting Started page</a>.</li>
-</ul>
-</li>
-<li><code>release</code><ul>
-<li>Demo apps and the plugins that create them reside here.  You can try
-  them out live on the web; see
-  <a href="../dev-tutorial/">the demo apps and tutorials page</a>.</li>
-<li>The <em>Lurch Proof Checker</em> is being rewritten for the web and it will
-  live in this folder later.</li>
-</ul>
-</li>
-</ul></div>
+<li>The example HTML code above produces the embedded Lurch document shown
+    below.</li>
+</ol>
+<div class='lurch-embed'>
+    <p>Here is a Lurch document with two paragraphs, but no expressions.</p>
+    <p>To see how to embed expressions, check out the examples below.</p>
+</div></div>
             </div>
         </div>
 

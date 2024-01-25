@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Introduction - Lurch Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Basics, Part 6: Connecting Dependencies - Lurch Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Lurch Documentation</a>
+                <a class="navbar-brand" href="../..">Lurch Documentation</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,34 +34,34 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developers <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Introduction</a>
+    <a href="../../developer/" class="dropdown-item">Introduction</a>
 </li>
                                     
 <li>
-    <a href="../getting-started/" class="dropdown-item">Getting started</a>
+    <a href="../../getting-started/" class="dropdown-item">Getting started</a>
 </li>
                                     
 <li>
-    <a href="../dev-tutorial/" class="dropdown-item">Tutorial</a>
+    <a href="../../dev-tutorial/" class="dropdown-item">Tutorial</a>
 </li>
                                     
 <li>
-    <a href="../plan/" class="dropdown-item">Project plan</a>
+    <a href="../../plan/" class="dropdown-item">Project plan</a>
 </li>
                                     
 <li>
-    <a href="../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
+    <a href="../../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
 </li>
                                     
 <li>
-    <a href="../example-apps/" class="dropdown-item">Example apps</a>
+    <a href="../../example-apps/" class="dropdown-item">Example apps</a>
 </li>
                                 </ul>
                             </li>
@@ -73,16 +73,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../getting-started/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -101,21 +91,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lurch-developer-docs" class="nav-link">Lurch Developer Docs</a>
+            <li class="nav-item" data-level="1"><a href="#basics-part-6-connecting-dependencies" class="nav-link">Basics, Part 6: Connecting Dependencies</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#a-development-platform" class="nav-link">A Development Platform</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#architecture" class="nav-link">Architecture</a>
+            <li class="nav-item" data-level="2"><a href="#saving-a-document-for-use-as-a-dependency" class="nav-link">Saving a document for use as a dependency</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#getting-involved" class="nav-link">Getting involved</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#repository-details" class="nav-link">Repository details</a>
+            <li class="nav-item" data-level="2"><a href="#citing-a-library-from-a-document" class="nav-link">Citing a library from a document</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -126,87 +108,49 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lurch-developer-docs">Lurch Developer Docs</h1>
-<h2 id="a-development-platform">A Development Platform</h2>
-<p>Rewriting the Lurch desktop app for the web involves building many
-supporting tools that we call the <em>Lurch Web Platform.</em>  Other developers
-can build math-enabled web apps on the same platform, which improves the
-platform and grows the community.</p>
-<p>We've made the architecture simple and the learning curve small.  <a href="../dev-tutorial/">See the
-demo applications and tutorial to start developing.</a>  We
-are currently using the platform to build Lurch on the web.</p>
-<h2 id="architecture">Architecture</h2>
-<p>The following table illustrates the software architecture.  Read it from the
-bottom up.</p>
-<table>
-  <tr>
-    <td>Applications:</td>
-    <td align=center><i>Lurch Proof Checker</i></td>
-    <td align=center><a href='../dev-tutorial'>Demo apps</a></td>
-    <td align=center>Your app</td>
-  </tr>
-  <tr>
-    <td>Platform:</td>
-    <td align=center colspan=3><i>Lurch Web Platform</i></td>
-  </tr>
-  <tr>
-    <td>Foundation:</td>
-    <td align=center colspan=3><a href='http://www.tinymce.com'>TinyMCE
-        editor</a></td>
-  </tr>
-</table>
-
-<h2 id="getting-involved">Getting involved</h2>
-<p>If you're interested in helping out with development of this project (e.g.,
-upstream commits if you use the platform), contact
-<a href="mailto:ncarter@bentley.edu">Nathan Carter</a>.</p>
-<h2 id="repository-details">Repository details</h2>
-<p>All source code is in <a href="http://coffeescript.org/#literate">literate
-CoffeeScript</a>.  This makes it highly
-readable, especially on GitHub, which renders it as MarkDown.  I have tried
-to be verbose in my comments, to help new readers.</p>
-<p>Repository overview:</p>
+<h1 id="basics-part-6-connecting-dependencies">Basics, Part 6: Connecting Dependencies</h1>
+<h2 id="saving-a-document-for-use-as-a-dependency">Saving a document for use as a dependency</h2>
+<p>Before you can tell Lurch about a library you want to use as a dependency in
+a document, you must have the library somewhere you can access it.  Lurch
+supports (for now) two locations where you can store libraries.</p>
 <ul>
-<li><code>/</code> (root folder)<ul>
-<li><code>package.json</code> - used by <a href="http://nodejs.org">node.js</a> to install
-  dependencies  (The app runs in a browser, not node.js.  This is just
-  for dev tools.)</li>
-<li><code>gulpfile.litcoffee</code> define the build process, which uses
-  <a href="https://gulpjs.com/">gulp</a></li>
-<li><code>mkdocs.yml</code> defines how this documentation site is built, which uses
-  <a href="http://www.mkdocs.org/">mkdocs</a></li>
+<li>the local storage filesystem in your browser (which we learned about in
+   <a href="../basics-1/">the first part of this tutorial</a>)</li>
+<li>a global wiki of Lurch documents (which is not yet publicly available,
+   but will become so as the project matures)</li>
 </ul>
-</li>
-<li><code>docs</code><ul>
-<li>All source files (Markdown) for this documentation site, which
-  <a href="http://www.mkdocs.org/">mkdocs</a> compiles into the <code>site</code> folder.</li>
-</ul>
-</li>
-<li><code>site</code><ul>
-<li>Compiled version of <code>doc-src/</code> folder, for hosting on GitHub Pages;
-  you are seeing its contents here on this site</li>
-</ul>
-</li>
-<li><code>source</code><ul>
-<li>Source code files used for building the platform.</li>
-<li>The build process compiles these into files in the <code>release</code> folder.</li>
-</ul>
-</li>
-<li><code>unit-tests</code><ul>
-<li>Unit tests.</li>
-<li>To run them, execute <code>gulp test</code> in the main folder, after you've set
-  it up as per <a href="../getting-started/">the Getting Started page</a>.</li>
-</ul>
-</li>
-<li><code>release</code><ul>
-<li>Demo apps and the plugins that create them reside here.  You can try
-  them out live on the web; see
-  <a href="../dev-tutorial/">the demo apps and tutorials page</a>.</li>
-<li>The <em>Lurch Proof Checker</em> is being rewritten for the web and it will
-  live in this folder later.</li>
-</ul>
-</li>
-</ul></div>
+<p>Therefore we will do an example in which you store a library in your
+browser's local storage, and import it into another document from there.
+If you're using Dropbox for storage, temporarily switch over to using your
+browser's local storage, as described in
+<a href="../basics-1/">the first part of this tutorial</a>.</p>
+<p>I'll provide you a document to save.  Here it is.  Use the File menu in this
+embedded Lurch app to save the document under any name you choose, such as
+"example library.lurch".</p>
+<div class='lurch-embed'><shorthand>
+<p>This document defines one rule, using JavaScript.</p>
+<p>Don't worry about the code for now; you just have to save the file!</p>
+<p>This silly rule judges everything to be valid.
+   We'll name it <e at='label' to='1'>enthusiasm</e>.</p>
+<p><e n='1'><e at='rule'>yes</e><e at='code'>JavaScript</e>return { result : 'valid', message : 'Heck yeah!' }</e></p>
+</shorthand></div>
+
+<h2 id="citing-a-library-from-a-document">Citing a library from a document</h2>
+<p>Once you've saved the above document, you can then import it into another
+document.  Try following these steps:</p>
+<ol>
+<li>In the same embedded Lurch window, above, choose File, then New.</li>
+<li>In the new document, choose File, then Document Settings.</li>
+<li>Click the button to add a file dependency.</li>
+<li>Choose the file you just saved, with the enthusiasm rule in it.</li>
+<li>Click Save to store those settings in the document.</li>
+<li>Write any expression in the new, empty document.</li>
+<li>Apply to it a reason whose contents are "enthusiasm" (lower case, no
+    quotation marks).</li>
+</ol>
+<p>You should see the step judged correct, and if you hover your mouse over the
+green check mark, Lurch should give you an enthusiastic affirmation of your
+work.</p></div>
             </div>
         </div>
 
@@ -215,11 +159,11 @@ to be verbose in my comments, to help new readers.</p>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

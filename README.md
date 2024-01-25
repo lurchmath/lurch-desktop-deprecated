@@ -1,13 +1,7 @@
 
 # Lurch
 
-This repository is a reorganization of
-[an older repository](https://github.com/nathancarter/weblurch)
-for the same project.
+This repository has been superseded by a new one.
 
-The web version of Lurch is under development and migrating from that
-repository to this one.  Thus this one is pretty empty for now.  Check back
-later.
+[Visit the new repository here.](http://www.github.com/lurchmath/lurchmath)
 
-Source code files currently residing in this repository are not yet part of
-any build process, but are part of an in-progress migration.

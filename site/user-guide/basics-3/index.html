@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Introduction - Lurch Documentation</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Basics, Part 3: Connections and attributes - Lurch Documentation</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">Lurch Documentation</a>
+                <a class="navbar-brand" href="../..">Lurch Documentation</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,34 +34,34 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href=".." class="nav-link">Home</a>
+                                <a href="../.." class="nav-link">Home</a>
                             </li>
-                            <li class="dropdown active">
+                            <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developers <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active">Introduction</a>
+    <a href="../../developer/" class="dropdown-item">Introduction</a>
 </li>
                                     
 <li>
-    <a href="../getting-started/" class="dropdown-item">Getting started</a>
+    <a href="../../getting-started/" class="dropdown-item">Getting started</a>
 </li>
                                     
 <li>
-    <a href="../dev-tutorial/" class="dropdown-item">Tutorial</a>
+    <a href="../../dev-tutorial/" class="dropdown-item">Tutorial</a>
 </li>
                                     
 <li>
-    <a href="../plan/" class="dropdown-item">Project plan</a>
+    <a href="../../plan/" class="dropdown-item">Project plan</a>
 </li>
                                     
 <li>
-    <a href="../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
+    <a href="../../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
 </li>
                                     
 <li>
-    <a href="../example-apps/" class="dropdown-item">Example apps</a>
+    <a href="../../example-apps/" class="dropdown-item">Example apps</a>
 </li>
                                 </ul>
                             </li>
@@ -73,16 +73,6 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li class="nav-item">
-                                <a rel="prev" href=".." class="nav-link">
-                                    <i class="fa fa-arrow-left"></i> Previous
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a rel="next" href="../getting-started/" class="nav-link">
-                                    Next <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
                     </ul>
                 </div>
             </div>
@@ -101,21 +91,17 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#lurch-developer-docs" class="nav-link">Lurch Developer Docs</a>
+            <li class="nav-item" data-level="1"><a href="#basics-part-3-connections-and-attributes" class="nav-link">Basics, Part 3: Connections and attributes</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#a-development-platform" class="nav-link">A Development Platform</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#architecture" class="nav-link">Architecture</a>
+            <li class="nav-item" data-level="2"><a href="#attributes" class="nav-link">Attributes</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#getting-involved" class="nav-link">Getting involved</a>
+            <li class="nav-item" data-level="2"><a href="#keys" class="nav-link">Keys</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#repository-details" class="nav-link">Repository details</a>
+            <li class="nav-item" data-level="2"><a href="#attributes-summary" class="nav-link">Attributes summary</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -126,87 +112,73 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="lurch-developer-docs">Lurch Developer Docs</h1>
-<h2 id="a-development-platform">A Development Platform</h2>
-<p>Rewriting the Lurch desktop app for the web involves building many
-supporting tools that we call the <em>Lurch Web Platform.</em>  Other developers
-can build math-enabled web apps on the same platform, which improves the
-platform and grows the community.</p>
-<p>We've made the architecture simple and the learning curve small.  <a href="../dev-tutorial/">See the
-demo applications and tutorial to start developing.</a>  We
-are currently using the platform to build Lurch on the web.</p>
-<h2 id="architecture">Architecture</h2>
-<p>The following table illustrates the software architecture.  Read it from the
-bottom up.</p>
-<table>
-  <tr>
-    <td>Applications:</td>
-    <td align=center><i>Lurch Proof Checker</i></td>
-    <td align=center><a href='../dev-tutorial'>Demo apps</a></td>
-    <td align=center>Your app</td>
-  </tr>
-  <tr>
-    <td>Platform:</td>
-    <td align=center colspan=3><i>Lurch Web Platform</i></td>
-  </tr>
-  <tr>
-    <td>Foundation:</td>
-    <td align=center colspan=3><a href='http://www.tinymce.com'>TinyMCE
-        editor</a></td>
-  </tr>
-</table>
+<h1 id="basics-part-3-connections-and-attributes">Basics, Part 3: Connections and attributes</h1>
+<h2 id="attributes">Attributes</h2>
+<p>Each expression has a set of attributes, which is a list of key-value pairs.
+By default, each expressions set of attributes is empty.</p>
+<p>To use one expression as an expression for another, you must connect the
+attribute to its target with an arrow.  Do so as follows.</p>
+<ol>
+<li>Place your cursor in the expression that will become an attribute.</li>
+<li>Click the connections button on the toolbar (with the &#x2197; icon).</li>
+<li>Click to place your cursor in the target expression.</li>
+</ol>
+<p>See the examples below.</p>
+<div class='lurch-embed'><shorthand>
+<p>A connection has been created for you here:</p>
+<p>From this <e to='1' at='label'>source</e>
+    to this <e n='1'>target</e>.</p>
+<p>Place your cursor in either expression to see the connection.</p>
+<p>Now try it yourself.  Form a connection here:</p>
+<p><e>Make this the source,</e> and <e>make this the target</e>.</p>
+</shorthand></div>
 
-<h2 id="getting-involved">Getting involved</h2>
-<p>If you're interested in helping out with development of this project (e.g.,
-upstream commits if you use the platform), contact
-<a href="mailto:ncarter@bentley.edu">Nathan Carter</a>.</p>
-<h2 id="repository-details">Repository details</h2>
-<p>All source code is in <a href="http://coffeescript.org/#literate">literate
-CoffeeScript</a>.  This makes it highly
-readable, especially on GitHub, which renders it as MarkDown.  I have tried
-to be verbose in my comments, to help new readers.</p>
-<p>Repository overview:</p>
+<h2 id="keys">Keys</h2>
+<p>In the examples above, all the attributes have the word "label" on their
+arrows.  That is the <em>key</em> for the attribute, and the source expression is
+the attribute's <em>value.</em>  So for example, the "target" expression has an
+attribute with key "label" and value "source."</p>
+<p>You can change this in a few ways.</p>
 <ul>
-<li><code>/</code> (root folder)<ul>
-<li><code>package.json</code> - used by <a href="http://nodejs.org">node.js</a> to install
-  dependencies  (The app runs in a browser, not node.js.  This is just
-  for dev tools.)</li>
-<li><code>gulpfile.litcoffee</code> define the build process, which uses
-  <a href="https://gulpjs.com/">gulp</a></li>
-<li><code>mkdocs.yml</code> defines how this documentation site is built, which uses
-  <a href="http://www.mkdocs.org/">mkdocs</a></li>
+<li>To change where the key is shown:<ul>
+<li>Right-click the attribute expression and choose:
+  Move "label" onto attribute.  This will move the word "label" from the
+  arrow onto the top of the attribute bubble itself.</li>
+<li>To undo that action, right-click again and choose to move it back, or
+  click the word "label" where it sits on top of the attribute bubble.</li>
 </ul>
 </li>
-<li><code>docs</code><ul>
-<li>All source files (Markdown) for this documentation site, which
-  <a href="http://www.mkdocs.org/">mkdocs</a> compiles into the <code>site</code> folder.</li>
+<li>To change the key:<ul>
+<li>If the key is shown on the arrow, right-click the expression and
+  choose: Change attribute key to...</li>
+<li>If the key is shown on top of the attribute bubble, click it and make
+  the same choice.</li>
 </ul>
 </li>
-<li><code>site</code><ul>
-<li>Compiled version of <code>doc-src/</code> folder, for hosting on GitHub Pages;
-  you are seeing its contents here on this site</li>
 </ul>
-</li>
-<li><code>source</code><ul>
-<li>Source code files used for building the platform.</li>
-<li>The build process compiles these into files in the <code>release</code> folder.</li>
+<p>Try each of these methods in the example Lurch document above.</p>
+<h2 id="attributes-summary">Attributes summary</h2>
+<p>You can hide an attribute inside the expression it modifies.  Right-click
+the attribute and choose "Hide this attribute."</p>
+<p>To reveal an attribute, right-click the expression into which it was hidden,
+and choose "Attributes..."  A dialog will appear listing all attributes of
+the expression, both hidden and visible.  You can hide/show them, edit the
+keys, edit the values of any atomic attribute values, delete attributes, and
+add new ones from that dialog.</p>
+<p>Here is an example of a single target with many attributes attached to it.
+Right-click the target and ask to see its attributes summary.  (Notice the
+one hidden attribute!)</p>
+<div class='lurch-embed'><shorthand>
+<p>Target expression:</p>
+<ul><li><e n='1'>Abraham Lincoln<e at='party'>Whig</e></e></li></ul>
+<p>Some attributes attached to it:</p>
+<ul>
+    <li><e at='gender' to='1'>male</e></li>
+    <li><e at='occupation' to='1'>lawyer</e></li>
+    <li><e at='occupation' to='1'>state representative</e></li>
+    <li><e at='occupation' to='1'>president</e></li>
 </ul>
-</li>
-<li><code>unit-tests</code><ul>
-<li>Unit tests.</li>
-<li>To run them, execute <code>gulp test</code> in the main folder, after you've set
-  it up as per <a href="../getting-started/">the Getting Started page</a>.</li>
-</ul>
-</li>
-<li><code>release</code><ul>
-<li>Demo apps and the plugins that create them reside here.  You can try
-  them out live on the web; see
-  <a href="../dev-tutorial/">the demo apps and tutorials page</a>.</li>
-<li>The <em>Lurch Proof Checker</em> is being rewritten for the web and it will
-  live in this folder later.</li>
-</ul>
-</li>
-</ul></div>
+</shorthand></div></div>
             </div>
         </div>
 
@@ -215,11 +187,11 @@ to be verbose in my comments, to help new readers.</p>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">

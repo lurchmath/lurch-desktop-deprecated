@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Plans for Migrating this Repository - Lurch Documentation</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Lurch Documentation</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Developers <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../developer/" class="dropdown-item">Introduction</a>
+</li>
+                                    
+<li>
+    <a href="../getting-started/" class="dropdown-item">Getting started</a>
+</li>
+                                    
+<li>
+    <a href="../dev-tutorial/" class="dropdown-item">Tutorial</a>
+</li>
+                                    
+<li>
+    <a href="../plan/" class="dropdown-item">Project plan</a>
+</li>
+                                    
+<li>
+    <a href="../bugs-and-enhancements/" class="dropdown-item">Bug fix/enhancement list</a>
+</li>
+                                    
+<li>
+    <a href="../example-apps/" class="dropdown-item">Example apps</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#plans-for-migrating-this-repository" class="nav-link">Plans for Migrating this Repository</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#preparing-the-new-space" class="nav-link">Preparing the new space</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#moving-the-first-subproject-over" class="nav-link">Moving the first subproject over</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#moving-more-subprojects-over" class="nav-link">Moving more subprojects over</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#supporting-cloud-storage" class="nav-link">Supporting Cloud Storage</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#obviating-some-files-in-the-repository" class="nav-link">Obviating some files in the repository</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#starting-a-new-main-repository" class="nav-link">Starting a new main repository</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#moving-large-chunks-of-code-that-will-get-used-later" class="nav-link">Moving large chunks of code that will get used later</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#beginning-to-use-the-migrated-code" class="nav-link">Beginning to use the migrated code</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#creating-demo-apps-as-separate-projects" class="nav-link">Creating demo apps as separate projects</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#handling-experimental-content" class="nav-link">Handling experimental content</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#miscellaneous" class="nav-link">Miscellaneous</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#migrating-unit-tests" class="nav-link">Migrating unit tests</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#migrating-documentation" class="nav-link">Migrating documentation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#preparing-various-repos-to-be-used-in-webworkers" class="nav-link">Preparing various repos to be used in WebWorkers</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#warning" class="nav-link">Warning</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#handling-the-main-app" class="nav-link">Handling the main app</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#adding-in-browser-testing" class="nav-link">Adding in-browser testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="plans-for-migrating-this-repository">Plans for Migrating this Repository</h1>
+<p>We plan to migrate this repository to a GitHub organization shared by both
+project collaborators, <a href="http://nathancarter.github.io">Nathan Carter</a> and
+<a href="http://github.com/kenmonks">Ken Monks</a>.</p>
+<p>Reasons for the move:</p>
+<ul>
+<li>The <a href="../plan/">project plan file</a> already lists several ways in which this
+   repository needs to be tidied up.  Those plans will be accomplished as
+   part of the migration.</li>
+<li>Until now, Nathan has been the primary author, but Ken will be getting
+   more involved in the development from this point forward.  Thus a shared
+   space is sensible.  We also hope to have other developers and student
+   assistants join us in the future, thereby making the organization account
+   even more sensible and useful.</li>
+<li>The move will simplify our URL to something easier to remember,
+   <a href="http://lurchmath.github.io">lurchmath.github.io</a>.  (At the time of this
+   writing, that URL has no content at it.  One of the tasks listed below is
+   to create such content.)</li>
+</ul>
+<h2 id="preparing-the-new-space">Preparing the new space</h2>
+<p>The organization account has been created, Nathan is an owner, and Ken has
+been invited as a member.  Tasks to do to complete the space include these:</p>
+<ul>
+<li>[x] Create a project with name <code>lurchmath.github.io</code> owned by the
+   organization, following the directions
+   <a href="https://pages.github.com/">on this page</a>.</li>
+<li>[x] Ensure both collaborators have ownership of/access to this project.</li>
+<li>[x] For consistency with the existing repo, let's use
+   <a href="http://www.mkdocs.org">MkDocs</a> to create that site.  Follow the
+   directions <a href="http://www.mkdocs.org/#getting-started">here</a> to get started.
+   You probably want to add a redirection page from the root folder to the
+   <code>site/</code> folder, or configure GitHub to go there without a redirection
+   page needed (better option if possible).  For now, make a placeholder
+   website we can extend later.</li>
+<li>[x] Create a <code>README.md</code> in that project that simply points the reader to
+   the website.</li>
+</ul>
+<h2 id="moving-the-first-subproject-over">Moving the first subproject over</h2>
+<p>One of the repository tidying tasks is to factor out independent subprojects
+into their own repositories, and use GitHub pages like a CDN for serving
+their compiled JavaScript versions.  Another goal is to start using a build
+tool, and I've chosen <a href="https://gulpjs.com/">Gulp</a> as what seems best for our
+needs.  We will try both of those things out on a single subproject, to test
+and cement a good process before proceeding to factor out other subprojects.</p>
+<p>We will use the <a href="../src/openmath-duo.litcoffee">OpenMath</a> module as the
+first subproject to factor out into its own repository.  As you do the
+following steps, record somewhere the proper way to do each one, so that you
+can repeat this process for other subprojects more easily hereafter.</p>
+<ul>
+<li>[x] Create a new project in the Lurch Math organization for the OpenMath
+   JavaScript library and clone it to your local machine.</li>
+<li>[x] Copy the <a href="../src/openmath-duo.litcoffee">source</a> and
+   <a href="../test/openmath-spec.litcoffee">test</a> files to the new repository, in
+   its root folder.  Rename them to <code>openmath.litcoffee</code> and
+   <code>spec.litcoffee</code>, respectively.  Commit.</li>
+<li>[x] Create a <code>package.json</code> file that imports the Jasmine test tool.
+   Ensure that you can run Jasmine on the spec file and that the tests
+   pass; modify any paths necessary to make this happen.  Commit.</li>
+<li>[x] Install Gulp and create a
+   <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulpfile</a> that does nothing.  Commit.</li>
+<li>[x] Extend the Gulpfile to compile a JavaScript version of the OpenMath
+   module.  Add the <code>.js</code> file to the repo and commit.</li>
+<li>[x] Extend the Gulpfile to also compile a minified version, with source
+   maps.  Add these files to the repository and commit again.</li>
+<li>[x] Extend the Gulpfile with a <code>tests</code> task that runs the Jasmine
+   command on your behalf.  Commit.</li>
+<li>[x] Register the project with TravisCI so that the tests are run on every
+   push to the repository.</li>
+<li>[x] Create a <code>README.md</code> in the repository root that explains the
+   project and includes the TravisCI test status image.  It should refer
+   the user to the GitHub links to the raw compiled and minified scripts,
+   so that GitHub can be used as a makeshift CDN.</li>
+<li>[x] Add documentation for this subproject using
+   <a href="http://www.mkdocs.org">MkDocs</a>, as you did for the new Lurch Math
+   organization.  Follow the directions
+   <a href="http://www.mkdocs.org/#getting-started">here</a> to get started.  Commit.</li>
+<li>[x] Extend the Gulpfile with a <code>docs</code> task that runs the <code>mkdocs</code>
+   command on your behalf.  Commit.</li>
+<li>[x] Remove the OpenMath code from the existing webLurch repository,
+   instead importing it using the makeshift CDN mentioned above.  Change all
+   references to it in the documentation to mention the newly-factored-out
+   repository in the new organization.  Verify that all uses of that module
+   still function in the main webLurch repository, and commit changes there.</li>
+</ul>
+<h2 id="moving-more-subprojects-over">Moving more subprojects over</h2>
+<p>Once you've accomplished the process in the previous section, and documented
+it well so that you can do it more smoothly the second time (and the third,
+and so on), do that process to factor out each of the following subprojects
+from the main, existing webLurch repository.</p>
+<ul>
+<li>[x] The Parsing module</li>
+<li>[x] The Matching module</li>
+</ul>
+<h2 id="supporting-cloud-storage">Supporting Cloud Storage</h2>
+<p>Now that the <a href="https://github.com/lurchmath/cloud-storage">cloud storage
+module</a> has been built and
+tested, it should replace both the LocalStorage and baby Dropbox support in
+webLurch at present.  Here's a to-do list for accomplishing that.</p>
+<ul>
+<li>[x] Update the cloud storage module to show how to import its files with
+   <a href="http://www.jsdeliver.net">jsDelivr</a> in the README.</li>
+<li>[x] Have all the apps import the cloud storage module from that CDN,
+   before importing <a href="../app/app.js">app.js</a>, and ensure that nothing gets
+   broken in the process.  The module won't be used yet, just imported for
+   later.</li>
+<li>[x] Make a copy of <a href="../app/loadsaveplugin.litcoffee">the Load/Save
+   Plugin</a> and call it the Cloud Storage
+   Plugin instead, renaming it in both filename and script code.</li>
+<li>[x] Ensure that the Cloud Storage Plugin is part of the build process and
+   is included in the app and installed in the editor object.</li>
+<li>[x] Figure out a way to get the cloud storage tools to function
+   exclusively from cloud.  This may involve using GitHub web serving, since
+   jsdelivr won't serve HTML pages as HTML pages.  If this can't be done,
+   at least move the tools into a subfolder of the app folder, and enhance
+   their API so that they can support living in a subfolder.  Then extend
+   the build process to always fetch the latest versions.  (Or add that as a
+   task to be done once grunt is adopted.)</li>
+<li>[x] Replace the LoadSave plugin and the Dropbox plugin with a single
+   Storage plugin, as follows.<ul>
+<li>[x] Rename the DropboxPlugin to the StoragePlugin</li>
+<li>[x] Translate the following code from LoadSave to Storage:</li>
+<li>[x] All code in the constructor section, except Manage Files item</li>
+<li>[x] Add to the constructor the creation of both back ends</li>
+<li>[x] All code in the setters section</li>
+<li>[x] Add a member that reports all available back ends</li>
+<li>[x] Add a member that lets users get/set which back end is active</li>
+<li>[x] All code in the new documents section</li>
+<li>[x] All code in the saving documents section except <code>save</code></li>
+<li>[x] Replace <code>tryToSave</code> with the handler Dropbox would install</li>
+<li>[x] Create the "loading documents" section in the Storage plugin</li>
+<li>[x] Convert the old <code>@load</code> member to one that takes the
+     <code>[content,metadata]</code> array as input and loads it into the editor</li>
+<li>[x] Create a new function for loading a named file from
+     LocalStorage, returning <code>[content,metadata]</code>; no editor updating</li>
+<li>[x] Ensure the Storage plugin exposes a <code>filename</code> member; this
+  should be easy to do whenever you update <code>lastFileObject</code></li>
+<li>[x] Update <code>DependenciesPlugin.getFileMetadata</code> to call the new
+  Storage plugin function that loads files from LocalStorage</li>
+<li>[x] Update <code>setup.litcoffee</code> to say <code>storage</code> instead of
+  <code>cloudstorage</code></li>
+<li>[x] Ensure that the install procedure for the StoragePlugin calls
+  it <code>storage</code> and not <code>dropbox</code></li>
+<li>[x] Remove from <code>setup.litcoffee</code> the <code>loadsave</code> plugin</li>
+<li>[x] Replace every instance of <code>LoadSave</code> with <code>Storage</code> throughout</li>
+<li>[x] Remove the LoadSave plugin entirely from the application.</li>
+<li>[x] Update the wiki plugin because you've implemented <code>embedMetadata</code>
+  and <code>extractMetadata</code> in the Storage plugin now, so they aren't
+  globally defined, and don't need to be redefined in the wiki plugin.
+  Also, everyone who calls them should do so through the Storage plugin.</li>
+</ul>
+</li>
+<li>[x] In <a href="main-app-settings.litcoffee">main-app-settings.litcoffee</a>, change
+   the <code>setFilesystem</code> function so that any chosen filesystem calls the new
+   API function in the Storage plugin, telling it to change to that
+   filesystem.  Ensure that the right options are provided as radio buttons,
+   up around line 47.  Test to be sure that all filesystems now work.</li>
+<li>[x] Ensure that no reference to the <code>jsfs</code> submodule remains in the
+   application.</li>
+<li>[x] Update any other demo apps to remove all references to the <code>jsfs</code>
+   submodule.</li>
+<li>[x] Remove the <code>jsfs</code> submodule from the repository.  Ensure that the
+   applications still function.</li>
+<li>[x] Remove <a href="../app/filedialog/filedialog.html">the old file dialog
+   source</a>.  Ensure that the
+   applications still function.</li>
+<li>[x] Get rid of the LZString JS library from our repository.  Ensure that
+   the applications still function.</li>
+<li>[x] Make the functionality improvements listed in the cloud storage repo.</li>
+</ul>
+<h2 id="obviating-some-files-in-the-repository">Obviating some files in the repository</h2>
+<ul>
+<li>[x] Because our only targeted browser is Chrome, which now supports
+   <code>navigator.hardwardConcurrency</code> natively, you can drop the
+   <code>core-estimator</code> files in the repository, and update any code to use the
+   native version instead (if any updates are even needed).  Be sure to
+   stop importing the removed polyfill.</li>
+<li>[x] Get rid of the <code>jquery-splitter/</code> folder and submodule.  Instead,
+   use the following CDN URLs:
+   https://cdn.jsdelivr.net/gh/jcubic/jquery.splitter@0.24/js/jquery.splitter.min.js
+   and
+   https://cdn.jsdelivr.net/gh/jcubic/jquery.splitter@0.24/css/jquery.splitter.min.css</li>
+</ul>
+<h2 id="starting-a-new-main-repository">Starting a new main repository</h2>
+<ul>
+<li>[x] Create a new project in the Lurch Math organization for receiving the
+   main repository, as we slowly transfer pieces over, cleaning cruft as we
+   go.  Call it <code>Lurch</code>.  Ensure both collaborators have permissions.</li>
+<li>[x] Transfer the <code>README.md</code> from the old repository (with any needed
+   images and updated links) to the new one.  Commit.</li>
+<li>[x] Start documentation for this project using
+   <a href="http://www.mkdocs.org">MkDocs</a>, as you did in previous projects.
+   Follow the directions
+   <a href="http://www.mkdocs.org/#getting-started">here</a> to get started.  Use a
+   <code>docs/</code> subfolder that compiles to a <code>site/</code> subfolder.  For now, it
+   should be 99% blank, just a placeholder for where future documentation
+   will go.  Commit.</li>
+<li>[x] Ensure that GitHub is set up to use the root of the project as the
+   web site, and create an <code>index.html</code> that is a one-line redirecting META
+   tag into the <code>site/</code> folder, as we did earlier.</li>
+<li>[x] Create a Gulpfile with a <code>docs</code> task that runs the <code>mkdocs</code>
+   command on your behalf.  Commit.</li>
+</ul>
+<h2 id="moving-large-chunks-of-code-that-will-get-used-later">Moving large chunks of code that will get used later</h2>
+<ul>
+<li>[x] Create a <code>source/modules</code> subfolder in the new repository and move
+   into it all remaining code in the <code>src/</code> folder of the old repository.
+   Commit, but mention that these files are not yet used for anything, and
+   are just part of an ongoing migration process.</li>
+<li>[x] Create a <code>source/plugins</code> subfolder in the new repository and move
+   into it all files matching <code>app/*plugin.litcoffee</code> from the old
+   repository.  Also move any files that those plugins require, such as
+   <code>.css</code> files.  Commit, but mention that these files are not yet used for
+   anything, and are just part of an ongoing migration process.</li>
+<li>[x] Move the following important source files from the old repo into
+   <code>source/</code> in the new repo.  Commit, again mentioning this is part of an
+   ongoing migration.<ul>
+<li>[x] <code>keyboard-shortcuts-workaround.litcoffee</code></li>
+<li>[x] <code>mathquill-parser-solo.litcoffee</code></li>
+<li>[x] <code>setup.litcoffee</code></li>
+<li>[x] <code>testrecorder-solo.litcoffee</code></li>
+<li>[x] <code>testrecorder.html</code></li>
+<li>[x] <code>testrecorder.litcoffee</code></li>
+<li>[x] <code>lurch-embed-solo.litcoffee</code></li>
+</ul>
+</li>
+<li>[x] Create a <code>source/experimental</code> subfolder in the new repository and
+   move into it the following files from the old repository.  Commit, but
+   mention that these files are not yet used for anything, and are just
+   part of an ongoing migration process.<ul>
+<li>[x] <code>cp-test-solo.litcoffee</code></li>
+<li>[x] <code>cp-test.html</code></li>
+<li>[x] <code>lpf-test-solo.litcoffee</code></li>
+<li>[x] <code>lpf-test.html</code></li>
+</ul>
+</li>
+<li>[x] Create a <code>source/main-app</code> subfolder in the new repository and move
+   into it the following files from the old repository.  Commit, but
+   mention that these files are not yet used for anything, and are just
+   part of an ongoing migration process.<ul>
+<li>[x] <code>main-app-attr-dialog-solo.litcoffee</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-basics-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-group-class-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-group-labels-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-group-validation-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-groups-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-import-export-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-proto-groups-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-settings-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>main-app-sharing-solo.</code> (dropping the <code>main-app-</code>)</li>
+<li>[x] <code>app.html</code></li>
+</ul>
+</li>
+<li>[x] Create a <code>source/assets</code> subfolder in the new repository and move
+   into it the following files from the old repository.  Commit, but
+   mention that these files are not yet used for anything, and are just
+   part of an ongoing migration process.<ul>
+<li>[x] <code>eqed/</code> folder</li>
+<li>[x] <code>input-method.js</code> (Which is online here, if you want to import it
+  from GitHub raw, like a fake CDN: https://leanprover.github.io/tutorial/js/input-method.js)</li>
+<li>[x] <code>icons/</code> folder</li>
+<li>[x] <code>images/</code> folder</li>
+</ul>
+</li>
+<li>[x] Create a <code>unit-tests</code> subfolder in the new repository and move into
+   it the following files from the old repository.  Commit, but mention that
+   these files are not yet used for anything, and are just part of an
+   ongoing migration process.<ul>
+<li>[x] <code>app-test-utils.litcoffee</code></li>
+<li>[x] <code>domutils-spec.litcoffee</code></li>
+<li>[x] <code>groupsplugin-change-spec.litcoffee</code></li>
+<li>[x] <code>groupsplugin-spec.litcoffee</code></li>
+<li>[x] <code>loadsaveplugin-spec.litcoffee</code></li>
+<li>[x] <code>overlayplugin-spec.litcoffee</code></li>
+<li>[x] <code>phantom-utils.litcoffee</code></li>
+<li>[x] <code>tinymce-basics-spec.litcoffee</code></li>
+<li>[x] <code>utils-spec.litcoffee</code></li>
+<li>[x] <code>embedding/</code> folder</li>
+</ul>
+</li>
+</ul>
+<h2 id="beginning-to-use-the-migrated-code">Beginning to use the migrated code</h2>
+<ul>
+<li>[x] Rename files that end with <code>-solo</code> to not have that suffix.</li>
+<li>[x] Create a <code>release/</code> folder within the new repository.</li>
+<li>[x] Implement a gulp task called <code>lwp-build</code> that
+   concatenates all the following into a single file, in this order, then
+   compiles it with minification and source maps into
+   <code>release/lurch-web-platform.*</code>:<ul>
+<li><code>source/modules/utils.litcoffee</code></li>
+<li><code>source/modules/domutils.litcoffee</code></li>
+<li><code>source/modules/canvasutils.litcoffee</code></li>
+<li><code>source/plugins/*.litcoffee</code></li>
+<li><code>source/auxiliary/keyboard-shortcuts-workaround.litcoffee</code></li>
+<li><code>source/auxiliary/testrecorder.litcoffee</code></li>
+<li><code>source/auxiliary/setup.litcoffee</code></li>
+</ul>
+</li>
+<li>[x] Implement a gulp task called <code>build-auxiliary-js-files</code> that
+   compiles each of the following files, with minification and source maps,
+   into the <code>release/</code> folder.<ul>
+<li><code>source/auxiliary/lurch-embed.litcoffee</code></li>
+<li><code>source/auxiliary/mathquill-parser.litcoffee</code></li>
+<li><code>source/auxiliary/testrecorder.litcoffee</code></li>
+<li><code>source/auxiliary/background.litcoffee</code></li>
+<li><code>source/auxiliary/worker.litcoffee</code></li>
+</ul>
+</li>
+<li>[x] Implement a gulp task called <code>build-experiments</code> that compiles (with
+   minification and source maps) <code>source/experiments/*.litcoffee</code> into the
+   same (experiments) folder.</li>
+<li>[x] Implement a default gulp task that runs all the previous ones.</li>
+<li>[x] Test that this has succeeded by temporarily moving into the new repo
+   the compiled versions of <code>simple-example*.*</code> from the old repo's <code>app/</code>
+   folder, and verifying that the example still runs.  Do not keep these
+   files in the new repo; move them out and <em>then</em> commit the changes.  (But
+   keep the files so that you can use them in the next stage, below.)</li>
+</ul>
+<h2 id="creating-demo-apps-as-separate-projects">Creating demo apps as separate projects</h2>
+<p>Consider each of the following example applications.</p>
+<ul>
+<li>[x] <code>simple-example*.*</code></li>
+<li>[x] <code>complex-example*.*</code></li>
+<li>[x] <code>math-example*.*</code></li>
+<li>[x] <code>openmath-example*.*</code></li>
+<li>[x] <code>lean-example*.*</code></li>
+<li>[x] <code>sidebar-example*.*</code></li>
+</ul>
+<p>For each of them, do all of the following steps.</p>
+<ul>
+<li>Create a new project to house the example.<ul>
+<li>mkdir lwp-example-<name></li>
+<li>cd lwp-example-<name></li>
+<li>git init</li>
+<li>On https://github.com/lurchmath, click New.</li>
+<li>Give the repo the name <code>lwp-example-&lt;name&gt;</code>.</li>
+<li>Description: <Some kinda> example built on the Lurch Web Platform.</li>
+<li>Don't initialize with a README; just Create repository.</li>
+<li>git remote add origin https://github.com/lurchmath/lwp-example-<name>.git</li>
+</ul>
+</li>
+<li>Move files in.<ul>
+<li>cp ../../weblurch/app/<name>-example<em>.</em> .</li>
+<li>mv <name>-example.html index.html</li>
+<li>Rename the other files to <code>lwp-example-&lt;name&gt;.*</code>.</li>
+<li>git add --all</li>
+<li>git commit -m 'Importing files from old webLurch repo (with renaming)'</li>
+<li>git push -u origin master</li>
+<li>Update index.html, mimicking lwp-example-simple/index.html, which
+  is a very different style than it was.</li>
+<li>Test with a local web server, and get it working.</li>
+<li>Open that new repo in GitHub desktop.</li>
+<li>Commit.</li>
+</ul>
+</li>
+<li>Create a build process.<ul>
+<li>npm install gulp gulp-coffee gulp-uglify gulp-sourcemaps pump --save-dev</li>
+<li>Create a .gitignore that mentions node_modules.</li>
+<li>It should compile and minify the source code all in the root dir.</li>
+<li>Remove any files not generated by that build process.</li>
+<li>Commit and push.</li>
+</ul>
+</li>
+<li>Add a README.<ul>
+<li>It should explain the repository briefly.</li>
+<li>It should direct readers into the literate source for details.</li>
+<li>It should also link to the build process source.</li>
+<li>Commit and push.</li>
+</ul>
+</li>
+<li>Web space:<ul>
+<li>Visit https://github.com/lurchmath/lwp-example-<name>.</li>
+<li>Click Settings, scroll down to GitHub Pages.</li>
+<li>Choose Master branch, click Save.</li>
+<li>Verify that the application works when you visit
+  https://lurchmath.github.io/lwp-example-<name></li>
+<li>Add to the README a link to the functioning app at that URL.</li>
+<li>Commit and push.</li>
+</ul>
+</li>
+<li>Update source code.<ul>
+<li>Update links in <code>addHelpMenuSourceCodeLink</code> and <code>helpAboutText</code>.</li>
+<li>Update links in any of the Markdown documentation.</li>
+<li>Read the literate comments and fix anything else out-of-date.</li>
+<li>Be sure there is a link to the main project repo:
+  https://github.com/lurchmath/lurch</li>
+</ul>
+</li>
+</ul>
+<h2 id="handling-experimental-content">Handling experimental content</h2>
+<ul>
+<li>[x] Create a Gulp build process called <code>experimental</code> that compiles and
+   minifies all the code in the <code>source/experimental/</code> folder in the new
+   repository, leaving it in that folder so it doesn't accidentally get
+   committed to the repository.</li>
+<li>[x] Ensure that the HTML files in that directory correctly import the
+   Lurch Web Platform from the parent directory (<code>site/</code>).</li>
+<li>[x] Ensure that the experimental HTML apps in that folder still function
+   (or at least function as well as they do in the old repo).  Commit.</li>
+</ul>
+<h2 id="miscellaneous">Miscellaneous</h2>
+<ul>
+<li>[x] Update <code>lurch-embed.litcoffee</code> to function in the new space.</li>
+<li>[x] Since you've changed the <code>Api-User-Agent</code> of the MediaWiki Plugin
+   from "webLurch Application" to "Lurch Application," check to see if your
+   MediaWiki modifications on the other end are sensitive to that, and if
+   so, update them.</li>
+<li>[x] Add a README to the <code>main-app</code> folder, explaining that it is a
+   half-built app that works well so far, but we're not yet making it live
+   in this new repo because we're redesigning it and a lot may change.</li>
+<li>[x] Add to the new repository a record of all changes performed on
+   MediaWiki to get it working with Lurch.</li>
+</ul>
+<h2 id="migrating-unit-tests">Migrating unit tests</h2>
+<ul>
+<li>[x] Make a Gulp task called <code>tests</code> that initially does nothing.  Commit,
+   but mention that obviously this is not yet complete.</li>
+<li>[x] Extend that Gulp task so that it runs any unit tests that do not yet
+   need <a href="http://phantomjs.org/">PhantomJS</a>.  Ensure that they run (not
+   necessarily passing yet) and then commit.</li>
+</ul>
+<h2 id="migrating-documentation">Migrating documentation</h2>
+<ul>
+<li>[ ] Copy all the content from the old repo's <code>doc-src/</code> folder into the
+   new repo's <code>docs/</code> folder.  Do not commit.</li>
+<li>[ ] Transfer the contents of the <code>mkdocs.yml</code> file into this new
+   repository.  Do not commit.</li>
+<li>[ ] Move off to the side all files that teach how to use the main Lurch
+   app, because that has not yet been transferred/updated/designed in this
+   new context.  Ensure they are removed from <code>mkdocs.yml</code>.  Do not commit.</li>
+<li>[ ] Create a gulp build process that runs mkdocs.  Ensure that it works,
+   even though the docs aren't yet updated.  Commit.</li>
+<li>[ ] Proofread each page in the new site, updating any links or
+   explanations to be accurate and up-to-date after all the recent migration
+   changes.  This should include explaining what's going on with the main
+   app, in its limbo state.  Test often as you write, using the Gulp task
+   that builds the documentation.  Commit.</li>
+<li>[ ] Update <code>setup.litcoffee</code>, in which I formerly commented out the
+   section linking to the developer tutorial from the Help menu.  Now you
+   can add that link back in, to the new developer tutorial.</li>
+<li>[ ] Update the README in the <code>lwp-example-lean</code> repository to reference
+   the full Lean tutorial documentation.  While you're at it, check to see
+   if that app actually uses the equation editor at all.  If not, remove
+   the <code>eqed/</code> subfolder from that repository, as well as the scripts
+   imported from it, just to simplify things.</li>
+</ul>
+<h2 id="preparing-various-repos-to-be-used-in-webworkers">Preparing various repos to be used in WebWorkers</h2>
+<ul>
+<li>[ ] Extend the first-order matching package with a function that checks
+   to see if the script is being run in a WebWorker.  Just check for the
+   presence of the global <code>WorkerGlobalScope</code> object.  If it is, then
+   install a message listener that exposes the entire matching API to the
+   parent window.  Recall the functions for doing so,
+   <a href="https://www.codeday.top/2017/09/02/37957.html">described here</a>.</li>
+<li>[ ] Extend the tests in that module to ensure that the in-worker version
+   works just fine when accessed by message-passing.  You can get a
+   WebWorker shim for node.js
+   <a href="https://www.npmjs.com/package/webworker-threads">here</a>.  To do async
+   testing in Jasmine, see the documentation on that feature
+   <a href="https://jasmine.github.io/2.0/introduction.html#section-Asynchronous_Support">here</a>.</li>
+<li>[ ] Commit and push those changes.</li>
+<li>[ ] Extend the documentation in the mkdocs site in that repo so that it
+   mentions the WebWorker support, showing how to use it, and linking to the
+   relevant portions of the source code and testing spec.  Commit, push.</li>
+<li>[ ] Update the minor version number and re-publish to npm.</li>
+<li>[ ] Extend the Earley Parsing package with a function that checks to see
+   if the script is being run in a WebWorker.  Just check for the presence
+   of the global <code>WorkerGlobalScope</code> object.  If it is, then install a
+   message listener that exposes the entire parsing API to the parent
+   window.  Recall the functions for doing so,
+   <a href="https://www.codeday.top/2017/09/02/37957.html">described here</a>.</li>
+<li>[ ] Extend the tests in that module to ensure that the in-worker version
+   works just fine when accessed by message-passing.  You can get a
+   WebWorker shim for node.js
+   <a href="https://www.npmjs.com/package/webworker-threads">here</a>.  To do async
+   testing in Jasmine, see the documentation on that feature</li>
+<li>[ ] Commit and push those changes.</li>
+<li>[ ] Extend the documentation in the mkdocs site in that repo so that it
+   mentions the WebWorker support, showing how to use it, and linking to the
+   relevant portions of the source code and testing spec.  Commit, push.</li>
+<li>[ ] Update the minor version number and re-publish to npm.</li>
+</ul>
+<h2 id="warning">Warning</h2>
+<p>It may be best to stop here for now, until our design efforts progress far
+enough that we know with some certainty whether the following tasks still
+make sense, or at least know better how to do them correctly.</p>
+<h2 id="handling-the-main-app">Handling the main app</h2>
+<ul>
+<li>[ ] Create a Gulp build process called <code>main-app</code> that compiles and
+   minifies all the code in the <code>source/main-app/</code> folder in the new
+   repository, and copies all the result into a <code>site/app/</code> directory,
+   having first deleted everything in that folder.</li>
+<li>[ ] Ensure that the HTML file in that directory correctly imports the
+   Lurch Web Platform from the parent directory (<code>site/</code>).</li>
+<li>[ ] Ensure that the HTML app in that folder still functions, just as it
+   does in the old repo.  Commit.</li>
+<li>[ ] Once there is a main app, update the old unit tests to load the main
+   page of that app and test themselves against it.  Add those unit tests to
+   the gulp test process.</li>
+</ul>
+<h2 id="adding-in-browser-testing">Adding in-browser testing</h2>
+<ul>
+<li>[ ] Add PhantomJS to the <code>package.json</code> file of the new repository,
+   following the lead of how this was first done in the old repository.</li>
+<li>[ ] Extend the Gulp tests task so that it successfully runs the simplest
+   of the unit tests that require PhantomJS (probably <code>domutils</code>).  Commit.</li>
+<li>[ ] Extend the Gulp tests task iteratively with new unit tests that
+   require PhantomJS, fixing errors as you proceed, committing after each.</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
